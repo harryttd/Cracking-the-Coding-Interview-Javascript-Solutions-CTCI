@@ -30,11 +30,11 @@ export function zeroMatrix2(matrix) {
   if (!matrix || !matrix.length) throw Error('invalid matrix');
   if (matrix.length === 1 && matrix[0].length === 1) return matrix;
 
-  const colCoords = [];
+  const colCoords = new Set();
   matrix.forEach(row => {
     if (row.includes(0)) {
       row.forEach((columnCell, index) => {
-        if (columnCell === 0) colCoords.push(index);
+        if (columnCell === 0) colCoords.add(index);
         row[index] = 0;
       });
     }
