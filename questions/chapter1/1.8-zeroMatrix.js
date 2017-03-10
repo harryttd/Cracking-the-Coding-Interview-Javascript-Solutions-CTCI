@@ -25,7 +25,7 @@ export function zeroMatrix1(matrix) {
   return matrix;
 }
 
-// SECOND SHORTER SOLUTION
+// SECOND BETTER OPTIMIZED SOLUTION
 export function zeroMatrix2(matrix) {
   if (!matrix || !matrix.length) throw Error('invalid matrix');
   if (matrix.length === 1 && matrix[0].length === 1) return matrix;
@@ -59,4 +59,4 @@ const matrix = [
   [10, 9, 8, 7]
 ];
 
-console.log(zeroMatrix2(matrix));
+// console.log(zeroMatrix2(matrix));

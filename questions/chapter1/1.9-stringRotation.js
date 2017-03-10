@@ -5,4 +5,4 @@ export function stringRotation(str1, str2) {
   return (str2 + str2).indexOf(str1) > -1;
 }
 
-console.log(stringRotation('waterbottle', 'erbottlewat'));
+// console.log(stringRotation('waterbottle', 'erbottlewat'));
