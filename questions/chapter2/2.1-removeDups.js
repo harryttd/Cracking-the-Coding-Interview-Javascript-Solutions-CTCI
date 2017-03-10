@@ -1,6 +1,7 @@
+'use strict';
 // USING A SET
-// O(N) RUNTIME - O(N) SPACE
-export function removeDups1(list) {
+// O(N) TIME -- O(N) SPACE
+export function removeDupes1(list) {
   if (!list || !list.next) return list;
   const set = new Set();
   set.add(list.value);
@@ -14,8 +15,8 @@ export function removeDups1(list) {
   }
 }
 
-// O(N^2) RUNTIME
-export function removeDups2(list) {
+// O(N^2) TIME
+export function removeDupes2(list) {
   if (!list || !list.next) return list;
   while (list) {
     let head = list;

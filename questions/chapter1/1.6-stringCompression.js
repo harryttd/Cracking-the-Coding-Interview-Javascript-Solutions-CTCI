@@ -1,3 +1,4 @@
+'use strict';
 // MY FIRST SOLUTION
 function compressString(map) {
   let str = '';

@@ -1,3 +1,4 @@
+'use strict';
 export function oneAway(str1, str2) {
   const str1Length = str1.length,
         str2Length = str2.length;

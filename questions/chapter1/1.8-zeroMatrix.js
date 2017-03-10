@@ -1,3 +1,4 @@
+'use strict';
 // FIRST SOLUTION
 export function zeroMatrix1(matrix) {
   if (!matrix || !matrix.length) throw Error('invalid matrix');
