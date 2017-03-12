@@ -40,7 +40,7 @@ export function KthToLast2(list, k) {
   return list.value;
 }
 
-// RECURSIVE METHOD. ONLY PRINTS THE Kth NODE. DOES NOT RETURN IT.
+// RECURSIVE METHOD. ONLY PRINTS THE Kth TO LAST NODE. DOES NOT RETURN IT.
 // O(N) SPACE
 function printKthToLast(list, k) {
   if (!list) return 0;
