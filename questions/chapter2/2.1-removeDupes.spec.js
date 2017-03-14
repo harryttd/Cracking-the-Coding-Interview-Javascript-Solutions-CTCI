@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import * as helpers from './helpers';
-import * as funcs from './2.1-removeDups';
+import * as funcs from './2.1-removeDupes';
 
 for (let key in funcs) {
   let func = funcs[key];
