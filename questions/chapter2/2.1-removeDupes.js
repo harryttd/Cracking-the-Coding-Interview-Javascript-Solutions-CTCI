@@ -1,16 +1,20 @@
 'use strict';
+
 // USING A SET
 // O(N) TIME -- O(N) SPACE
 export function removeDupes1(list) {
   if (!list || !list.next) return list;
+
   const set = new Set();
-  set.add(list.value);
-  while (list.next) {
-    if (set.has(list.next.value)) {
-      list.next = list.next.next;
+  let head = list;
+
+  set.add(head.value);
+  while (head.next) {
+    if (set.has(head.next.value)) {
+      head.next = head.next.next;
     } else {
-      set.add(list.next.value);
-      list = list.next;
+      set.add(head.next.value);
+      head = head.next;
     }
   }
 }
@@ -18,15 +22,17 @@ export function removeDupes1(list) {
 // O(N^2) TIME
 export function removeDupes2(list) {
   if (!list || !list.next) return list;
-  while (list) {
-    let head = list;
-    while (head.next) {
-      if (head.next.value === list.value) {
-        head.next = head.next.next;
+  let head = list;
+
+  while (head) {
+    let current = head;
+    while (current.next) {
+      if (current.next.value === head.value) {
+        current.next = current.next.next;
       } else {
-        head = head.next;
+        current = current.next;
       }
     }
-    list = list.next;
+    head = head.next;
   }
 }

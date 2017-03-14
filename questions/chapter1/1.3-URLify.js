@@ -5,7 +5,7 @@ export function URLify(str) {
   return str.split(' ').join('%20');
 }
 
-// solution from book
+// SOLUTION FROM BOOK
 // function URLify(str, trueLength) {
 //   let newString = '';
 //   for (var i = 0; i < trueLength; i++) {

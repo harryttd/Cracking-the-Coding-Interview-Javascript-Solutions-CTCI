@@ -2,6 +2,7 @@
 // FIRST SOLUTION
 export function zeroMatrix1(matrix) {
   if (!matrix || !matrix.length) throw Error('invalid matrix');
+
   if (matrix.length === 1 && matrix[0].length === 1) return matrix;
 
   const coordsSet = new Set();
@@ -29,6 +30,7 @@ export function zeroMatrix1(matrix) {
 // SECOND BETTER OPTIMIZED SOLUTION
 export function zeroMatrix2(matrix) {
   if (!matrix || !matrix.length) throw Error('invalid matrix');
+
   if (matrix.length === 1 && matrix[0].length === 1) return matrix;
 
   const colCoords = new Set();

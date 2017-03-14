@@ -1,6 +1,7 @@
 'use strict';
 export function rotateMatrix(matrix) {
   if (!matrix || !matrix.length) throw Error('invalid matrix');
+
   const len = matrix.length;
   for (let layer = 0; layer < len / 2; layer++) {
     const firstLayer = layer,
