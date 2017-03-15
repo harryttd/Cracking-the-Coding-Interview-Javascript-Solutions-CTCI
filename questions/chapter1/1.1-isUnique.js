@@ -1,9 +1,7 @@
 'use strict';
 
 // USING REGEX
-export function isUnique1(str) {
-  return !(/(.).*\1/).test(str);
-}
+export const isUnique1 = str => !/(.).*\1/.test(str);
 
 // O(N^2) TIME -- O(1) SPACE
 export function isUnique2(str) {

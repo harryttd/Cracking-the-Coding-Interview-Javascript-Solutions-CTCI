@@ -3,7 +3,6 @@
 export function linkedListToArray(list) {
   let arr = [],
     node = list;
-
   while (node !== null) {
     arr.push(node.value);
     node = node.next;
