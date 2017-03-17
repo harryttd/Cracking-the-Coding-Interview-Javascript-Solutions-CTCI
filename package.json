@@ -4,7 +4,7 @@
   "description": "",
   "main": "",
   "scripts": {
-    "test": "./node_modules/.bin/mocha"
+    "test": "nodemon ./node_modules/.bin/mocha"
   },
   "keywords": [],
   "author": "",

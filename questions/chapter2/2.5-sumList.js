@@ -1,25 +1,43 @@
 'use strict';
-import { arrayToLinkedList } from './helpers';
+import { arrayToLinkedList, createNode, listLength } from './helpers';
 
-// MY FIRST SOLUTION
-const convertToNum = arr => +arr.join``;
+// FIRST SOLUTION
+export function sumLists(list1, list2) {
+  const list1Arr = [], list2Arr = [];
 
-export function sumLists(num1, num2) {
-  const num1Arr = [], num2Arr = [];
-
-  while (num1 || num2) {
-    if (num1) {
-      num1Arr.unshift(num1.value);
-      num1 = num1.next;
+  while (list1 || list2) {
+    if (list1) {
+      list1Arr.unshift(list1.value);
+      list1 = list1.next;
     }
-    if (num2) {
-      num2Arr.unshift(num2.value);
-      num2 = num2.next;
+    if (list2) {
+      list2Arr.unshift(list2.value);
+      list2 = list2.next;
     }
   }
 
-  const total = convertToNum(num1Arr) + convertToNum(num2Arr);
+  const convertToNum = arr => +arr.join``;
+
+  const total = convertToNum(list1Arr) + convertToNum(list2Arr);
   const numberArr = total.toString().split``.reduceRight((acc, nextValue) => acc.concat(+nextValue), []);
 
   return arrayToLinkedList(numberArr);
+}
+
+// RECURSIVE SOLUTION
+export function sumLists2(list1, list2, carry) {
+  if (!list1 && !list2 && !carry) return null;
+
+  const newNode = createNode();
+  let value = carry || 0;
+
+  if (list1) value += list1.value;
+  if (list2) value += list2.value;
+  newNode.value = value % 10;
+
+  if (list1 || list2) {
+    const nextNode = sumLists2(list1 ? list1.next : null, list2 ? list2.next : null, value >= 10 ? 1 : 0);
+    newNode.next = nextNode;
+  }
+  return newNode;
 }
