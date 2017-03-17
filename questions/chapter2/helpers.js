@@ -1,6 +1,6 @@
 'use strict';
 
-export function listLength(list) {
+export function getListLength(list) {
   let length = 0;
 
   while (list) {

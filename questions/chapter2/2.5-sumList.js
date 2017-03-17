@@ -1,5 +1,5 @@
 'use strict';
-import { arrayToLinkedList, createNode, listLength } from './helpers';
+import { arrayToLinkedList, createNode, getListLength } from './helpers';
 
 // FIRST SOLUTION
 export function sumLists(list1, list2) {

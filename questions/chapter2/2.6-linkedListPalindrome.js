@@ -1,5 +1,33 @@
 'use strict';
-import { createNode } from './helpers';
+import { createNode, getListLength } from './helpers';
+
+// RECURSIVE SOLUTION
+export function isPalindromeRecursive(list) {
+  const palindrome = recursiveIsPalindrome(list, getListLength(list));
+  return palindrome.result;
+}
+
+function Result(node, result) {
+  this.node = node;
+  this.result = result;
+}
+
+function recursiveIsPalindrome(list, length) {
+  // If length is even
+  if (!list || length <= 0) return new Result(list, true);
+  // If length is odd
+  else if (length === 1) return new Result(list.next, true);
+
+  const compareNodes = recursiveIsPalindrome(list.next, length - 2);
+  if (!compareNodes.result || !compareNodes.node) return compareNodes;
+
+  compareNodes.result = list.value === compareNodes.node.value;
+  compareNodes.node = compareNodes.node.next;
+
+  return compareNodes;
+}
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // O(N) TIME -- ONLY KEEPS TRACK OF HALF THE LIST
 // USES A STACK
@@ -24,6 +52,8 @@ export function linkedListPalindrome1(list) {
   return true;
 }
 
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
 // O(N) TIME -- O(N) SPACE
 export function linkedListPalindrome2(list) {
   let head = null, node = list, lengthCounter = 0;
@@ -47,6 +77,8 @@ export function linkedListPalindrome2(list) {
 
   return true;
 }
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // USES AN ARRAY TO KEEP TRACK OF THE VALUES
 // O(N) TIME -- O(N) SPACE
