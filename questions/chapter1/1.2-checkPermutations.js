@@ -12,7 +12,7 @@ export function checkPermutations1(str1, str2) {
 }
 
 // 0(N) TIME -- O(N) SPACE
- export function checkPermutations2(str1, str2) {
+export function checkPermutations2(str1, str2) {
   if (!str1 || !str2 || str1.length !== str2.length) return false;
 
   const letterMap = new Map();
