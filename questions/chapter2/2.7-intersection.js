@@ -4,6 +4,7 @@ import { getListLength } from './helpers';
 // (O(A + B)) O(N) TIME -- O(1) SPACE
 export function intersection1(list1, list2) {
   if (!list1 || !list2) return;
+
   const length1 = getListLength(list1),
         length2 = getListLength(list2);
 
@@ -11,9 +12,7 @@ export function intersection1(list1, list2) {
       shorterList = longerList === list1 ? list2 : list1,
       traverseCounter = Math.abs(length1 - length2);
 
-  while (traverseCounter-- > 0) {
-    longerList = longerList.next;
-  }
+  while (traverseCounter-- > 0) longerList = longerList.next;
 
   while (shorterList) {
     if (shorterList === longerList) return shorterList;
@@ -27,6 +26,7 @@ export function intersection1(list1, list2) {
 // (O(A + B)) O(N) TIME -- O(N) SPACE
 export function intersection2(list1, list2) {
   if (!list1 || !list2) return;
+
   let head1 = list1, head2 = list2;
   const set = new Set();
 
@@ -81,6 +81,8 @@ export function BookSolutionIntersection3(list1, list2) {
     longerList = longerList.next;
   }
 }
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // IF BOTH LISTS ARE THE SAME LENGTH
 // function intersection(list1, list2) {
