@@ -5,7 +5,7 @@ import * as funcs from './2.6-linkedListPalindrome';
 for (let key in funcs) {
   let func = funcs[key];
 
-  describe.only('ch2-q6: ' + key, function() {
+  describe('ch2-q6: ' + key, function() {
 
     [
       [1, 2, 1],

@@ -7,16 +7,11 @@ export function isPalindromeRecursive(list) {
   return palindrome.result;
 }
 
-function Result(node, result) {
-  this.node = node;
-  this.result = result;
-}
-
 function recursiveIsPalindrome(list, length) {
   // If length is even
-  if (!list || length <= 0) return new Result(list, true);
+  if (!list || length <= 0) return {node: list, result: true};
   // If length is odd
-  else if (length === 1) return new Result(list.next, true);
+  else if (length === 1) return {node: list.next, result: true};
 
   const compareNodes = recursiveIsPalindrome(list.next, length - 2);
   if (!compareNodes.result || !compareNodes.node) return compareNodes;
