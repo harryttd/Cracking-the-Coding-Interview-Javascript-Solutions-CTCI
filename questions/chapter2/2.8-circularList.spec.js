@@ -5,7 +5,7 @@ import * as funcs from './2.8-circularList';
 for (let key in funcs) {
   let func = funcs[key];
 
-  describe('ch2-q8: ' + key, function() {
+  describe.only('ch2-q8: ' + key, function() {
 
     beforeEach(function() {
       this.list = helpers.createLinkedList();
