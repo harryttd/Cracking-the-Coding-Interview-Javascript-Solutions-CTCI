@@ -1,16 +1,5 @@
 'use strict';
 
-export function getListLength(list) {
-  let length = 0;
-
-  while (list) {
-    length++;
-    list = list.next;
-  }
-
-  return length;
-}
-
 export function linkedListToArray(list) {
   let arr = [],
     node = list;
@@ -42,7 +31,7 @@ export function arrayToLinkedList(arr) {
   return list;
 }
 
-export function getLength(list) {
+export function getListLength(list) {
   let length = 0;
   while (list) {
     list = list.next;

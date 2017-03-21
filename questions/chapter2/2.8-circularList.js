@@ -1,21 +1,36 @@
 'use strict';
 
+// RETURNS WHERE LOOP STARTS
 // O(N) TIME -- O(1) SPACE
-export function circularList1(list) {
+export function getLoopStartNode(list) {
   if (!list || !list.next) return null;
-  let pointer1 = list, pointer2 = list;
 
-  while (pointer2) {
-    pointer1 = pointer1.next;
-    pointer2 = pointer2.next.next;
-    if (pointer1 === pointer2) return pointer1;
+  let slowPointer = list, fastPointer = list;
+
+  // Check if pointers collide
+  while (fastPointer && fastPointer.next) {
+    slowPointer = slowPointer.next;
+    fastPointer = fastPointer.next.next;
+    if (slowPointer === fastPointer) break;
   }
 
-  return null;
+  // Check if it is not a circular list
+  if (!fastPointer || !fastPointer.next) return null;
+
+  // Move slow pointer to head and traverse to the beginning of the loop
+  slowPointer = list;
+  while (slowPointer !== fastPointer) {
+    slowPointer = slowPointer.next;
+    fastPointer = fastPointer.next;
+  }
+
+  return slowPointer;
 }
 
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
 // O(N) TIME -- O(N) SPACE
-export function circularList2(list) {
+export function circularList1(list) {
   if (!list || !list.next) return null;
 
   let head = list;
@@ -25,6 +40,23 @@ export function circularList2(list) {
     if (set.has(head)) return head;
     set.add(head);
     head = head.next;
+  }
+
+  return null;
+}
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+// THIS ONLY DEDECTS A CIRCULAR LIST AND RETURNS WHERE THE POINTERS COLLIDE. DOESN'T RETURN THE BEGINNING OF THE LOOP.
+// O(N) TIME -- O(1) SPACE
+export function circularList2(list) {
+  if (!list || !list.next) return null;
+  let slowPointer = list, fastPointer = list;
+
+  while (fastPointer) {
+    slowPointer = slowPointer.next;
+    fastPointer = fastPointer.next.next;
+    if (slowPointer === fastPointer) return slowPointer;
   }
 
   return null;
