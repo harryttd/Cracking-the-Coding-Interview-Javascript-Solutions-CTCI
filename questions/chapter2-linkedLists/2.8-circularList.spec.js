@@ -5,7 +5,7 @@ import * as funcs from './2.8-circularList';
 const { getLoopStartNode } = funcs,
       loopCollisionFuncs = [funcs.circularList1, funcs.circularList2];
 
-describe.only('ch2-q8: ---- RETURNS BEGINNING OF LOOP ---- ' + getLoopStartNode.name, function(){
+describe('ch2-q8: ---- RETURNS BEGINNING OF LOOP ---- ' + getLoopStartNode.name, function(){
 
   beforeEach(function() {
     this.list = helpers.createLinkedList();
@@ -20,28 +20,28 @@ describe.only('ch2-q8: ---- RETURNS BEGINNING OF LOOP ---- ' + getLoopStartNode.
     expect(getLoopStartNode(this.list.head)).to.be.null;
   });
 
-  it('returns beginning of loop in circular list', function() {
+  it('returns beginning node of loop in circular list 1', function() {
     helpers.push(this.list, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11);
     let node = this.list.head.next.next.next;
     this.list.tail.next = node;
     expect(getLoopStartNode(this.list.head)).to.equal(node);
   });
 
-  it('returns node when there is a loop 1', function() {
+  it('returns beginning node of loop in circular list 2', function() {
     helpers.push(this.list, 1, 2, 3, 4, 5, 6);
     let node = this.list.head;
     this.list.tail.next = node;
     expect(getLoopStartNode(this.list.head)).to.equal(node);
   });
 
-  it('returns node when there is a loop 2', function() {
+  it('returns beginning node of loop in circular list 3', function() {
     helpers.push(this.list, 1, 2, 3, 4, 5, 6);
     let node = this.list.head.next.next.next;
     this.list.tail.next = node;
     expect(getLoopStartNode(this.list.head)).to.equal(node);
   });
 
-  it('returns node when there is a loop 3', function() {
+  it('returns beginning node of loop in circular list 4', function() {
     helpers.push(this.list, 1, 2, 3, 4, 5, 6);
     let node = this.list.tail;
     this.list.tail.next = node;
@@ -51,7 +51,7 @@ describe.only('ch2-q8: ---- RETURNS BEGINNING OF LOOP ---- ' + getLoopStartNode.
 
 for (let func of loopCollisionFuncs) {
 
-  describe.only('ch2-q8: ---- RETURNS COLLISION NODE ---- ' + func.name, function() {
+  describe('ch2-q8: ---- RETURNS COLLISION NODE ---- ' + func.name, function() {
 
     beforeEach(function() {
       this.list = helpers.createLinkedList();
