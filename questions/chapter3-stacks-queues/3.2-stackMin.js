@@ -1,6 +1,7 @@
 'use strict';
 
-export class MinStack {
+// USES ADDITIONAL ARRAY TO KEEP TRACK OF MIN'S
+export class MinStack1 {
   constructor() {
     this._stack = [];
     this._minStack = [];
@@ -44,4 +45,48 @@ export class MinStack {
   isEmpty() {
     return this._stackLength === 0;
   }
+
+}
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+// USES AN OBJECT FOR EVERY PUSHED NUMBER TO KEEP TRACK OF THE MIN AT THAT POINT IN THE STACK
+export class MinStack2 {
+  constructor() {
+    this._stack = [];
+  }
+
+  push(value) {
+    const min = this.min();
+    this._stack.push({
+      value,
+      min: Math.min(min !== undefined ? min : Number.POSITIVE_INFINITY, value)
+    });
+  }
+
+  pop() {
+    if (!this.isEmpty()) {
+      const item = this._stack.pop();
+      return item.value;
+    }
+  }
+
+  peek() {
+    if (!this.isEmpty()) {
+      const item = this._stack[this._stack.length - 1];
+      return item.value;
+    }
+  }
+
+  min() {
+    if (!this.isEmpty()) {
+      const item = this._stack[this._stack.length - 1];
+      return item.min;
+    }
+  }
+
+  isEmpty() {
+    return this._stack.length === 0;
+  }
+
 }
