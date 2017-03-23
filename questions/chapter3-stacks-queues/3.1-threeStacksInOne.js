@@ -1,7 +1,6 @@
 'use strict';
 
 // FROM: https://github.com/careercup/CtCI-6th-Edition-JavaScript-ES2015/blob/master/src/chapter3/ch3-q1.js
-
 // STACK SIZE IS DYNAMIC
 export class TripleStack {
   constructor() {
@@ -46,6 +45,7 @@ export class TripleStack {
   isEmpty(stackNum) {
     return this._getLength(stackNum) === 0;
   }
+
 }
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
@@ -54,45 +54,45 @@ export class TripleStack {
 // STACKS HAVE A FIXED SIZE
 class FixedMultiStack {
   constructor(numOfStacks, stackSize) {
-    this.numOfStacks = numOfStacks || 3;
-    this.stackCapacity = stackSize || 1;
-    this.values = new Array(stackSize * this.numOfStacks || 0);
-    this.sizes = new Array(this.numOfStacks).fill(0);
+    this._numOfStacks = numOfStacks || 3;
+    this._stackCapacity = stackSize || 1;
+    this._values = new Array(stackSize * this._numOfStacks || 0);
+    this._sizes = new Array(this._numOfStacks).fill(0);
   }
 
   _indexOfTop(stackNum) {
-    const offset = (stackNum - 1) * this.stackCapacity,
-          size = this.sizes[stackNum - 1];
+    const offset = (stackNum - 1) * this._stackCapacity,
+          size = this._sizes[stackNum - 1];
     return offset + size - 1;
   }
 
   push(stackNum, value) {
     if (this.isFull(stackNum)) throw Error(`Stack number ${stackNum} is full`);
-    this.sizes[stackNum - 1]++;
-    this.values[this._indexOfTop(stackNum)] = value;
+    this._sizes[stackNum - 1]++;
+    this._values[this._indexOfTop(stackNum)] = value;
   }
 
   pop(stackNum) {
     if (this.isEmpty(stackNum)) throw Error(`Stack number ${stackNum} is empty`);
 
     const topIndex = this._indexOfTop(stackNum),
-          value = this.values[topIndex];
+          value = this._values[topIndex];
 
-    this.values[topIndex] = undefined;
-    this.sizes[stackNum - 1]--;
+    this._values[topIndex] = undefined;
+    this._sizes[stackNum - 1]--;
     return value;
   }
 
   peek(stackNum) {
-    return this.values[this._indexOfTop(stackNum)];
+    return this._values[this._indexOfTop(stackNum)];
   }
 
   isEmpty(stackNum) {
-    return this.sizes[stackNum - 1] === 0;
+    return this._sizes[stackNum - 1] === 0;
   }
 
   isFull(stackNum) {
-    return this.sizes[stackNum - 1] === this.stackCapacity;
+    return this._sizes[stackNum - 1] === this._stackCapacity;
   }
 
 }
