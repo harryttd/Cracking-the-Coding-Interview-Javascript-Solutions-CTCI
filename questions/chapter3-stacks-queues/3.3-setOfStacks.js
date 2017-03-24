@@ -25,6 +25,7 @@ export class SetOfStacks {
     return poppedValue;
   }
 
+  // MOVES LATER STACKS ELEMENT'S INTO PREVIOUS STACKS
   popAt(stackNumber) {
     const stackToPopFrom = this._stacks[stackNumber - 1];
     if (!stackToPopFrom) throw Error('Invalid stack number');
@@ -33,10 +34,9 @@ export class SetOfStacks {
     const poppedValue = stackToPopFrom.pop(),
           stacksLength = this._stacks.length;
 
-    if (stackNumber < this._stacks.length) {
+    if (stackNumber < stacksLength) {
       for (let i = stackNumber - 1; i < stacksLength - 1; i++) {
-        const currentStack = this._stacks[i];
-        currentStack[currentStack.length] = this._stacks[i + 1].shift();
+        this._stacks[i].push(this._stacks[i + 1].shift());
       }
     }
 

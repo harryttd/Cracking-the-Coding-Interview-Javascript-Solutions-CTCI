@@ -1,6 +1,6 @@
 'use strict';
 
-// USES ADDITIONAL ARRAY TO KEEP TRACK OF MIN'S
+// USES ADDITIONAL ARRAY TO KEEP TRACK OF MIN'S AND COUNTERS TO KEEP TRACK OF ARRAY LENGTHS
 export class MinStack1 {
   constructor() {
     this._stack = [];
@@ -22,11 +22,11 @@ export class MinStack1 {
   pop() {
     if (!this.isEmpty()) {
       const stackTop = this._stack[this._stackLength - 1];
-      this._stack[this._stackLength - 1] = undefined;
+      this._stack[this._stackLength - 1] = null;
       this._stackLength--;
 
       if (stackTop === this._minStack[this._minStackLength - 1]) {
-        this._minStack.pop();
+        this._minStack[this._minStackLength - 1] = null;
         this._minStackLength--;
       }
 
@@ -83,6 +83,50 @@ export class MinStack2 {
       const item = this._stack[this._stack.length - 1];
       return item.min;
     }
+  }
+
+  isEmpty() {
+    return this._stack.length === 0;
+  }
+
+}
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+// USING PUSH AND POP METHODS AND NOT MANUALLY KEEPING TRACK OF STACK LENGTHS
+export class MinStack3 {
+  constructor() {
+    this._stack = [];
+    this._minStack = [];
+  }
+
+  push(value) {
+    this._stack.push(value);
+
+    const min = this._minStack[this._minStack.length - 1];
+    if (min === undefined || value <= min) {
+      this._minStack.push(value);
+    }
+  }
+
+  pop() {
+    if (!this.isEmpty()) {
+      const poppedValue = this._stack.pop();
+
+      if (poppedValue === this._minStack[this._minStack.length - 1]) {
+        this._minStack.pop();
+      }
+
+      return poppedValue;
+    }
+  }
+
+  min() {
+    return this._minStack[this._minStack.length - 1];
+  }
+
+  peek() {
+    return this._stack[this._stack.length - 1];
   }
 
   isEmpty() {
