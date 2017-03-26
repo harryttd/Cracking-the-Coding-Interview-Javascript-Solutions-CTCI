@@ -53,9 +53,9 @@ export class TripleStack {
 // BASED OFF FIRST SOLUTION IN BOOK
 // STACKS HAVE A FIXED SIZE
 class FixedMultiStack {
-  constructor(numOfStacks, stackSize) {
-    this._numOfStacks = numOfStacks || 3;
-    this._stackCapacity = stackSize || 1;
+  constructor(numOfStacks = 3, stackSize = 1) {
+    this._numOfStacks = numOfStacks;
+    this._stackCapacity = stackSize;
     this._values = new Array(stackSize * this._numOfStacks || 0);
     this._sizes = new Array(this._numOfStacks).fill(0);
   }

@@ -1,5 +1,5 @@
 'use strict';
-import { arrayToLinkedList, createNode, getListLength } from './helpers';
+import { arrayToLinkedList, createNode } from './helpers';
 
 // FIRST SOLUTION
 export function sumLists(list1, list2) {
@@ -25,11 +25,11 @@ export function sumLists(list1, list2) {
 }
 
 // RECURSIVE SOLUTION
-export function sumLists2(list1, list2, carry) {
+export function sumLists2(list1, list2, carry = 0) {
   if (!list1 && !list2 && !carry) return null;
 
   const newNode = createNode();
-  let value = carry || 0;
+  let value = carry;
 
   if (list1) value += list1.value;
   if (list2) value += list2.value;

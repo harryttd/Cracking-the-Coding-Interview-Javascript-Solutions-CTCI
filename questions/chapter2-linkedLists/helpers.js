@@ -11,10 +11,10 @@ export function linkedListToArray(list) {
   return arr;
 }
 
-export function createNode(value, next) {
+export function createNode(value, next = null) {
   return {
     value,
-    next: next || null
+    next
   };
 }
 
