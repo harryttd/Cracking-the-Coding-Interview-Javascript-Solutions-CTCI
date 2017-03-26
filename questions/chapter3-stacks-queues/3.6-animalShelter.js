@@ -27,10 +27,10 @@ export class AnimalShelter {
     const catsLength = this._cats.length, dogsLength = this._dogs.length;
 
     if (catsLength && dogsLength) {
-      return this._peek(this._cats).id < this._peek(this._dogs).id ? this._cats.shift().name : this._dogs.shift().name;
+      return this._peek(this._cats).id < this._peek(this._dogs).id ? this.dequeueCat() : this.dequeueDog();
     } else {
-      if (catsLength) return this._cats.shift().name;
-      if (dogsLength) return this._dogs.shift().name;
+      if (catsLength) return this.dequeueCat();
+      if (dogsLength) return this.dequeueDog();
     }
 
   }
