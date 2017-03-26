@@ -13,6 +13,8 @@ const sort = (stack, value) => {
 };
 
 export const sortStack1 = (stack) => {
+  if (!Array.isArray(stack)) throw Error('Invalid input');
+
   const newStack = [stack.pop()];
   while (!isEmpty(stack)) sort(newStack, stack.pop());
   return newStack;
@@ -23,6 +25,8 @@ export const sortStack1 = (stack) => {
 // BOOK SOLUTION
 // MOVES NUMBERS BACK AND FORTH BETWEEN STACK AND TEMP TO SORT
 export const sortStack2 = (stack) => {
+  if (!Array.isArray(stack)) throw Error('Invalid input');
+
   const temp = [];
   while (!isEmpty(stack)) {
     const popped = stack.pop();
