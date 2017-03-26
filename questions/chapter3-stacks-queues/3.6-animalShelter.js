@@ -24,11 +24,13 @@ export class AnimalShelter {
   }
 
   dequeueAny() {
-    // console.log(this._peek(this._cats));
-    if (this._cats.length && this._dogs.length) {
+    const catsLength = this._cats.length, dogsLength = this._dogs.length;
+
+    if (catsLength && dogsLength) {
       return this._peek(this._cats).id < this._peek(this._dogs).id ? this._cats.shift().name : this._dogs.shift().name;
     } else {
-      return this._cats.length ? this._cats.shift().name : this._dogs.length ? this._dogs.shift().name : undefined;
+      if (catsLength) return this._cats.shift().name;
+      if (dogsLength) return this._dogs.shift().name;
     }
 
   }
@@ -36,6 +38,5 @@ export class AnimalShelter {
   _peek(queue) {
     return queue[0];
   }
-
 
 }
