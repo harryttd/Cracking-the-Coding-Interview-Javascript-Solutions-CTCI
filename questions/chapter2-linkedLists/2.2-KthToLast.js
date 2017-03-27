@@ -4,8 +4,8 @@
 // O(N) TIME -- O(1) SPACE
 export function KthToLast1(list, k) {
   if (!list) throw Error('invalid list');
-  let pointer1 = list,
-      pointer2 = list;
+
+  let pointer1 = list, pointer2 = list;
 
   for (let i = 0; i < k; i++) {
     if (!pointer1.next) throw Error('list is not long enough');
@@ -23,8 +23,8 @@ export function KthToLast1(list, k) {
 // USING A COUNTER
 export function KthToLast2(list, k) {
   if (!list) throw Error('invalid list');
-  let indexCounter = -1,
-      head = list;
+
+  let indexCounter = -1, head = list;
 
   while (head) {
     indexCounter++;
