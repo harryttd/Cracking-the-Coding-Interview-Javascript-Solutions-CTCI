@@ -2,7 +2,7 @@
 import { LinkedList } from './helpers';
 
 // RECURSIVE DEPTH-FIRST SEARCH SOLUTION
-// O(N) SPACE AND TIME
+// O(N) TIME AND SPACE
 export function DFSlinkedListsOfBTDepth(tree) {
   const lists = [];
   DFScreateListOfBTDepth(tree.root, lists);
@@ -23,7 +23,7 @@ function DFScreateListOfBTDepth(tree, lists, depthLevel = 0) {
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // ITERATIVE BREADTH-FIRST SEARCH SOLUTION
-// O(N) SPACE AND TIME
+// O(N) TIME AND SPACE
 export function BFScreatelinkedListsOfBTDepth(tree) {
   if (!tree.root) return [];
 
