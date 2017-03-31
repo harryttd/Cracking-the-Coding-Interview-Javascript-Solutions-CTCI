@@ -2,6 +2,7 @@
 import { LinkedList } from './helpers';
 
 // RECURSIVE DEPTH-FIRST SEARCH SOLUTION
+// O(N) SPACE AND TIME
 export function DFSlinkedListsOfBTDepth(tree) {
   const lists = [];
   DFScreateListOfBTDepth(tree.root, lists);
@@ -22,15 +23,12 @@ function DFScreateListOfBTDepth(tree, lists, depthLevel = 0) {
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // ITERATIVE BREADTH-FIRST SEARCH SOLUTION
-export function BFSlistOfBTDepth(tree) {
+// O(N) SPACE AND TIME
+export function BFScreatelinkedListsOfBTDepth(tree) {
   if (!tree.root) return [];
-  return BFScreatelinkedListsOfBTDepth(tree.root);
-}
 
-function BFScreatelinkedListsOfBTDepth(tree) {
-  const queue = [tree], lists = [];
-
-  tree.level = 0;
+  const queue = [tree.root], lists = [];
+  tree.root.level = 0;
 
   while (queue.length) {
     const parent = queue.shift();
