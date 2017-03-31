@@ -1,6 +1,6 @@
 'use strict';
 
-class TreeNode {
+export class TreeNode {
   constructor(value) {
     this.value = value;
     this.parent = this.left = this.right = null;
@@ -8,8 +8,8 @@ class TreeNode {
 }
 
 export class Tree {
-  constructor() {
-    this.root = null;
+  constructor(node = null) {
+    this.root = node;
   }
 
   add(value) {
@@ -87,16 +87,19 @@ function findDepth(cache, node, depth) {
 }
 
 export function isBalanced(tree) {
-  if (!tree || !tree.root) {
-    return true;
-  }
+  // if (Array.isArray(tree) || tree === undefined) return;
 
-  let node = tree.root,
-    cache = {
+  // if (!tree || !tree.root) {
+  //   return true;
+  // }
+
+  if (!tree) return true;
+  // let node = tree.root,
+  let cache = {
       min: Number.MAX_SAFE_INTEGER,
       max: Number.MIN_SAFE_INTEGER
     };
 
-  findDepth(cache, node, 0);
+  findDepth(cache, tree, 0);
   return cache.max - cache.min <= 1;
 }
