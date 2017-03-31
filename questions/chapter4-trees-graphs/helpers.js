@@ -8,8 +8,8 @@ export class TreeNode {
 }
 
 export class Tree {
-  constructor(node = null) {
-    this.root = node;
+  constructor() {
+    this.root = null;
   }
 
   add(value) {
@@ -34,7 +34,7 @@ export class Tree {
 
 class LinkedListNode {
   constructor(value, next = null) {
-    this.val = value;
+    this.value = value;
     this.next = next;
   }
 }
@@ -65,7 +65,7 @@ export class LinkedList {
   toArray() {
     let arr = [], node = this.head;
     while (node) {
-      arr.push(node.val);
+      arr.push(node.value);
       node = node.next;
     }
     return arr;
@@ -99,7 +99,7 @@ export function isBalanced(tree) {
       min: Number.MAX_SAFE_INTEGER,
       max: Number.MIN_SAFE_INTEGER
     };
-
+                // node
   findDepth(cache, tree, 0);
   return cache.max - cache.min <= 1;
 }
