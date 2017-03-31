@@ -9,7 +9,7 @@ function toArrayOfArrays(lists) {
 for (let key in funcs) {
   let func = funcs[key];
 
-  describe('ch4-q03: ' + key, function() {
+  describe.only('ch4-q03: ' + key, function() {
 
     beforeEach(function() {
       this.tree = new Tree();

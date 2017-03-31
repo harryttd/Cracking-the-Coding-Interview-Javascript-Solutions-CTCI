@@ -41,6 +41,7 @@ class LinkedListNode {
 
 export class LinkedList {
   constructor() {
+    // this.size = 0;
     this.head = this.tail = null;
   }
 
@@ -51,6 +52,7 @@ export class LinkedList {
     else {
       this.head = new LinkedListNode(value, this.head);
     }
+    // this.size++;
   }
 
   append(value) {
@@ -60,7 +62,12 @@ export class LinkedList {
     else {
       this.tail = this.tail.next = new LinkedListNode(value);
     }
+    // this.size++;
   }
+
+  // size() {
+  //   return this.size;
+  // }
 
   toArray() {
     let arr = [], node = this.head;

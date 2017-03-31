@@ -29,7 +29,12 @@ export class queueViaStacks {
       while (this._newStack.length) {
         this._oldStack.push(this._newStack.pop());
       }
+
+      // CONCAT CREATES A NEW ARRAY
       // this._oldStack = this._oldStack.concat(this._newStack.splice(0, this._newStack.length).reverse());
+
+      // THIS IS BETTER AS IT DOES NOT CREATE A NEW ARRAY
+      // this._oldStack.push.apply(this._oldStack, this._newStack.splice(0, this._newStack.length).reverse());
     }
   }
 
