@@ -19,7 +19,7 @@ export function sumLists(list1, list2) {
   const convertToNum = arr => +arr.join``;
 
   const total = convertToNum(list1Arr) + convertToNum(list2Arr);
-  const numberArr = total.toString().split``.reduceRight((acc, nextValue) => acc.concat(+nextValue), []);
+  const numberArr = [...total.toString()].reduceRight((acc, nextValue) => acc.concat(+nextValue), []);
 
   return arrayToLinkedList(numberArr);
 }

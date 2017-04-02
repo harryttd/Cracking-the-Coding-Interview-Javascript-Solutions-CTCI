@@ -1,6 +1,7 @@
 'use strict';
 
 export function partition(list, partitionNum) {
+
   let smallerHead, smallerTail, largerHead, largerTail;
   smallerHead = smallerTail = largerHead = largerTail = null;
 

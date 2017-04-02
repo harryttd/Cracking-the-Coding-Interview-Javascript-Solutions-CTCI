@@ -11,6 +11,7 @@ function compressString(map) {
 
 export function stringCompression1(str) {
   if (!str || str.length <= 2) return str;
+
   const charMap = new Map();
   let compressedString = '',
       previousLetter;
@@ -31,17 +32,20 @@ export function stringCompression1(str) {
   }
 
   compressedString += compressString(charMap);
+
   return compressedString.length < str.length ? compressedString : str;
 }
 
 // SECOND SHORTER SOLUTION WITH DOPE REGEX
 export function stringCompression2(str) {
   if (!str || str.length <= 2) return str;
+
   const letterGroups = str.match(/(.)\1*/g);
   let compressedString = '';
 
   letterGroups.forEach(group => {
     compressedString += group[0] + group.length;
   });
+
   return compressedString.length < str.length ? compressedString : str;
 }

@@ -7,6 +7,7 @@ export function palindromePermutation(str) {
   if (!str) return false;
 
   str = str.toLowerCase();
+
   const letterMap = new Set();
   for (let letter of str) {
     if (letter !== ' ') {

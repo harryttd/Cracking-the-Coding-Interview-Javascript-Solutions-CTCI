@@ -1,4 +1,5 @@
 'use strict';
+
 // FIRST SOLUTION
 export function zeroMatrix1(matrix) {
   if (!matrix || !matrix.length) throw Error('invalid matrix');
@@ -18,7 +19,8 @@ export function zeroMatrix1(matrix) {
     matrix[row].forEach((cell, index) => {
       matrix[row][index] = 0;
     });
-  // Going through each row again to check for column even though column will have changed when the row it's in changed
+
+    // Going through each row again to check for column even though column will have changed when the row it's in changed
     matrix.forEach(rowArr => {
       rowArr[col] = 0;
     });
@@ -43,7 +45,7 @@ export function zeroMatrix2(matrix) {
     }
   });
 
-  // Only goes through rows that have not already changed to zero and changes columns to zero
+  // Only goes through columns that have not already changed to zero
   matrix.forEach(row => {
     if (row[0] !== 0) {
       colCoords.forEach(col => {

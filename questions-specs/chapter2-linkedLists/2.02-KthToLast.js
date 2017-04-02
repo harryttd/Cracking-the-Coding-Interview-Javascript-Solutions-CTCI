@@ -5,19 +5,19 @@
 export function KthToLast1(list, k) {
   if (!list) throw Error('invalid list');
 
-  let pointer1 = list, pointer2 = list;
+  let aheadPointer = list, behindPointer = list;
 
   for (let i = 0; i < k; i++) {
-    if (!pointer1.next) throw Error('list is not long enough');
-    pointer1 = pointer1.next;
+    if (!aheadPointer.next) throw Error('list is not long enough');
+    aheadPointer = aheadPointer.next;
   }
 
-  while (pointer1.next) {
-    pointer1 = pointer1.next;
-    pointer2 = pointer2.next;
+  while (aheadPointer.next) {
+    aheadPointer = aheadPointer.next;
+    behindPointer = behindPointer.next;
   }
 
-  return pointer2.value;
+  return behindPointer.value;
 }
 
 // USING A COUNTER
