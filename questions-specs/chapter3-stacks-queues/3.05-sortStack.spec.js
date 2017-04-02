@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as funcs from './3.5-sortStack';
+import * as funcs from './3.05-sortStack';
 
 for (let key in funcs) {
   let func = funcs[key];

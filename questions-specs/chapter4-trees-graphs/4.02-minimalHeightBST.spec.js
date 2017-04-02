@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { isBalanced } from './helpers';
-import { minimalHeightBST } from './4.2-minimalHeightBST';
+import { minimalHeightBST } from './4.02-minimalHeightBST';
 
 describe('ch4-q02: Book Solution minimalHeightBST', function() {
   const func = minimalHeightBST;

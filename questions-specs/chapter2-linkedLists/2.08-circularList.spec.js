@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import * as helpers from './helpers';
-import * as funcs from './2.8-circularList';
+import * as funcs from './2.08-circularList';
 
 const { getLoopStartNode } = funcs,
       loopCollisionFuncs = [funcs.circularList1, funcs.circularList2];

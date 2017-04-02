@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { Tree } from './helpers';
-import * as funcs from './4.6-findSuccessor';
+import * as funcs from './4.06-findSuccessor';
 
 for (let key in funcs) {
   let func = funcs[key];

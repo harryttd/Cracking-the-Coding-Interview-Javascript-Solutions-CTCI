@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as funcs from './1.8-zeroMatrix';
+import * as funcs from './1.08-zeroMatrix';
 
 for (let key in funcs) {
   let func = funcs[key];

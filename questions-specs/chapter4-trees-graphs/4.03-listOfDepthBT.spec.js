@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { Tree } from './helpers';
-import * as funcs from './4.3-listOfDepthBT';
+import * as funcs from './4.03-listOfDepthBT';
 
 function toArrayOfArrays(lists) {
   return lists.map(l => l.toArray());

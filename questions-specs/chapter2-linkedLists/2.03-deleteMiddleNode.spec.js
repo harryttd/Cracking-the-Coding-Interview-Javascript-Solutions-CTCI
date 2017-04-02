@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import * as helpers from './helpers';
-import * as funcs from './2.3-deleteMiddleNode';
+import * as funcs from './2.03-deleteMiddleNode';
 
 for (let key in funcs) {
   let func = funcs[key];

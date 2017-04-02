@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import * as helpers from './helpers';
-import * as funcs from './2.7-intersection';
+import * as funcs from './2.07-intersection';
 
 function generateList(length) {
   let list = helpers.createLinkedList();

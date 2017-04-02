@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import * as helpers from './helpers';
-import * as funcs from './4.9-BSTsequences';
+import * as funcs from './4.09-BSTsequences';
 
 for (let key in funcs) {
   let func = funcs[key];

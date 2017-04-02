@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import * as helpers from './helpers';
-import * as funcs from './2.4-partition';
+import * as funcs from './2.04-partition';
 
 for (let key in funcs) {
   let func = funcs[key];

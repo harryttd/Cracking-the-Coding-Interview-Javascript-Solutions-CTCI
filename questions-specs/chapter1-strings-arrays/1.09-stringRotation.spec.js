@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as funcs from './1.9-stringRotation';
+import * as funcs from './1.09-stringRotation';
 
 for (let key in funcs) {
   let func = funcs[key];

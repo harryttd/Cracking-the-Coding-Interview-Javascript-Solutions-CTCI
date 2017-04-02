@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { Tree } from './helpers';
-import * as funcs from './4.8-firstCommonAncestor';
+import * as funcs from './4.08-firstCommonAncestor';
 
 for (let key in funcs) {
   let func = funcs[key];

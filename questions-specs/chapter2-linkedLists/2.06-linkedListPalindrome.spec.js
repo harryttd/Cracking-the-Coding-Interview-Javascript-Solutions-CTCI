@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import * as helpers from './helpers';
-import * as funcs from './2.6-linkedListPalindrome';
+import * as funcs from './2.06-linkedListPalindrome';
 
 for (let key in funcs) {
   let func = funcs[key];

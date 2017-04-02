@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as funcs from './1.2-checkPermutations';
+import * as funcs from './1.02-checkPermutations';
 
 for (let key in funcs) {
   let func = funcs[key];

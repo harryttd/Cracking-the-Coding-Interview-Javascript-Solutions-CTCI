@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as classes from './3.3-setOfStacks';
+import * as classes from './3.03-setOfStacks';
 
 for (let key in classes) {
   let Stack = classes[key];

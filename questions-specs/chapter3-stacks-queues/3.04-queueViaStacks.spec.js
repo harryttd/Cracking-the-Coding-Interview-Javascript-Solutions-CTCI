@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as classes from './3.4-queueViaStacks';
+import * as classes from './3.04-queueViaStacks';
 
 for (let key in classes) {
   let Queue = classes[key];

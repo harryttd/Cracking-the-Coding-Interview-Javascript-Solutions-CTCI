@@ -1,6 +1,6 @@
 
 import { expect } from 'chai';
-import * as funcs from './1.3-URLify';
+import * as funcs from './1.03-URLify';
 
 for (let key in funcs) {
   let func = funcs[key];

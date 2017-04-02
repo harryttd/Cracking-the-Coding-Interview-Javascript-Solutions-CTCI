@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as funcs from './1.6-stringCompression';
+import * as funcs from './1.06-stringCompression';
 
 for (let key in funcs) {
   let func = funcs[key];

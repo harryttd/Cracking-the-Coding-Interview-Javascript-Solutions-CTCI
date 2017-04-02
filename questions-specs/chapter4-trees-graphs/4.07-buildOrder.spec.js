@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as funcs from './4.7-buildOrder';
+import * as funcs from './4.07-buildOrder';
 
 for (let key in funcs) {
   let func = funcs[key];

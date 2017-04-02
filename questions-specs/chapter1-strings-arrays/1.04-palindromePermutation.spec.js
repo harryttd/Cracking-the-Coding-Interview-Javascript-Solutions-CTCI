@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as funcs from './1.4-palindromePermutation';
+import * as funcs from './1.04-palindromePermutation';
 
 for (let key in funcs) {
   let func = funcs[key];

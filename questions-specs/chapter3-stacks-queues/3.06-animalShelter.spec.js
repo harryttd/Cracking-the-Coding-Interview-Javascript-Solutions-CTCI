@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as classes from './3.6-animalShelter';
+import * as classes from './3.06-animalShelter';
 
 for (let key in classes) {
   let AnimalShelter = classes[key];

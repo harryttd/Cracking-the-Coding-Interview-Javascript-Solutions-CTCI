@@ -1,7 +1,7 @@
 
 import { expect } from 'chai';
 import * as helpers from './helpers';
-import * as funcs from './2.5-sumList';
+import * as funcs from './2.05-sumList';
 
 for (let key in funcs) {
   let func = funcs[key];

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import { Tree } from './helpers';
-import * as funcs from './4.5-validateBST';
+import * as funcs from './4.05-validateBST';
 
 for (let key in funcs) {
   let func = funcs[key];

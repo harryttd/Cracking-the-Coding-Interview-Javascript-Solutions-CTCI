@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as funcs from './1.1-isUnique';
+import * as funcs from './1.01-isUnique';
 
 for (let key in funcs) {
   let func = funcs[key];

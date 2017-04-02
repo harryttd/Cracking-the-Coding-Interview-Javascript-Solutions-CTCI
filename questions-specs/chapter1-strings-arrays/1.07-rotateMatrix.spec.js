@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import * as funcs from './1.7-rotateMatrix';
+import * as funcs from './1.07-rotateMatrix';
 
 function copyMatrix(matrix) {
   let newMatrix = [];
