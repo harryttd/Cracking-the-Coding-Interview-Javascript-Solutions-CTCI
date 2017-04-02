@@ -3,20 +3,20 @@ import { LinkedList } from './helpers';
 
 // RECURSIVE DEPTH-FIRST SEARCH SOLUTION
 // O(N) TIME AND SPACE
-export function DFSlinkedListsOfBTDepth(tree) {
+export function DFS_linkedListsOfBTDepth(tree) {
   const lists = [];
-  DFScreateListOfBTDepth(tree.root, lists);
+  DFS_createListOfBTDepth(tree.root, lists);
   return lists;
 }
 
-function DFScreateListOfBTDepth(tree, lists, depthLevel = 0) {
+function DFS_createListOfBTDepth(tree, lists, depthLevel = 0) {
   if (tree) {
     if (!lists[depthLevel]) lists[depthLevel] = new LinkedList();
 
     lists[depthLevel].append(tree.value);
 
-    DFScreateListOfBTDepth(tree.left, lists, depthLevel + 1);
-    DFScreateListOfBTDepth(tree.right, lists, depthLevel + 1);
+    DFS_createListOfBTDepth(tree.left, lists, depthLevel + 1);
+    DFS_createListOfBTDepth(tree.right, lists, depthLevel + 1);
   }
 }
 
@@ -24,7 +24,7 @@ function DFScreateListOfBTDepth(tree, lists, depthLevel = 0) {
 
 // ITERATIVE BREADTH-FIRST SEARCH SOLUTION
 // O(N) TIME AND SPACE
-export function BFScreatelinkedListsOfBTDepth(tree) {
+export function BFS_createlinkedListsOfBTDepth(tree) {
   if (!tree.root) return [];
 
   const queue = [tree.root], lists = [];

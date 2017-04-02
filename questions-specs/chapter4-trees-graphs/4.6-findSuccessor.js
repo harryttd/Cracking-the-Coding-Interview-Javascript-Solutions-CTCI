@@ -8,7 +8,6 @@ export function findSuccesor(node) {
     while (tree.left) tree = tree.left;
     return tree.value;
   }
-
   else if (node.parent) {
     if (node.parent.value > node.value) return node.parent.value;
     else {

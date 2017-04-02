@@ -65,10 +65,6 @@ export class LinkedList {
     // this.size++;
   }
 
-  // size() {
-  //   return this.size;
-  // }
-
   toArray() {
     let arr = [], node = this.head;
     while (node) {
