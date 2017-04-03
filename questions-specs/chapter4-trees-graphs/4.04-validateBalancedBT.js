@@ -43,3 +43,31 @@ function isBalanced(tree) {
 
   return isBalanced(tree.left) && isBalanced(tree.right);
 }
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+// SECOND BOOK SOLUTION
+// O(N) TIME AND SPACE
+
+const checkHeightError = (height) => height === Number.MIN_VALUE;
+
+export function validateBalancedBT_3(tree) {
+  if (!tree || !tree.root) return true;
+  return checkHeight(tree.root) !== Number.MIN_VALUE;
+}
+
+function checkHeight(tree) {
+  if (!tree) return -1;
+
+  const leftHeight = checkHeight(tree.left);
+  if (checkHeightError(leftHeight)) return Number.MIN_VALUE;
+
+  const rightHeight = checkHeight(tree.right);
+  if (checkHeightError(rightHeight)) return Number.MIN_VALUE;
+
+  const heightDiff = Math.abs(leftHeight - rightHeight);
+
+  if (heightDiff > 1) return Number.MIN_VALUE;
+
+  return Math.max(leftHeight, rightHeight) + 1;
+}

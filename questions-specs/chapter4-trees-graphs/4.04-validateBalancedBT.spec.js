@@ -5,7 +5,7 @@ import * as funcs from './4.04-validateBalancedBT';
 for (let key in funcs) {
   let func = funcs[key];
 
-  describe.only('ch4-q04: ' + key, function() {
+  describe('ch4-q04: ' + key, function() {
 
     beforeEach(function() {
       this.tree = new Tree();
