@@ -20,6 +20,8 @@ export function KthToLast1(list, k) {
   return behindPointer.value;
 }
 
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
 // USING A COUNTER
 export function KthToLast2(list, k) {
   if (!list) throw Error('invalid list');
@@ -40,6 +42,8 @@ export function KthToLast2(list, k) {
 
   return list.value;
 }
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // RECURSIVE METHOD. ONLY PRINTS THE Kth TO LAST NODE. DOES NOT RETURN IT.
 // O(N) SPACE

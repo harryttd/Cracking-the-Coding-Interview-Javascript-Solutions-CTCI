@@ -5,13 +5,13 @@ import * as funcs from './4.04-validateBalancedBT';
 for (let key in funcs) {
   let func = funcs[key];
 
-  xdescribe('ch4-q04: ' + key, function() {
+  describe.only('ch4-q04: ' + key, function() {
 
     beforeEach(function() {
       this.tree = new Tree();
     });
 
-    xit('returns true for null tree or root', function() {
+    it('returns true for null tree or root', function() {
       expect(func(null)).to.be.true;
       expect(func(this.tree)).to.be.true;
     });
