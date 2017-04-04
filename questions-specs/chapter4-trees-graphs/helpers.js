@@ -20,7 +20,7 @@ export class Tree {
     else {
       let n = this.root, branch;
       while (n) {
-        branch = value < n.value ? 'left' : 'right';
+        branch = value <= n.value ? 'left' : 'right';
         if (!n[branch]) {
           break;
         }

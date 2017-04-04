@@ -31,7 +31,7 @@ for (let key in funcs) {
       expect(func(this.tree)).to.be.true;
     });
 
-    xit('returns true for BST with duplicate values', function() {
+    it('returns true for BST with duplicate values', function() {
       // Tree class maintains BST property so this should be valid
       [10, 10].forEach(v => this.tree.add(v));
       expect(func(this.tree)).to.be.true;
