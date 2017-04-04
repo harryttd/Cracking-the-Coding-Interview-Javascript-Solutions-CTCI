@@ -1,6 +1,6 @@
 'use strict';
 
-// O(N) TIME --- (?? O(log N) SPACE - WORST CASE O(N) ??)
+// O(N) TIME --- O(log N) SPACE - WORST CASE O(N)
 export function validateBalancedBT_1(tree) {
   if (!tree || !tree.root) return true;
 
