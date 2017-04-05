@@ -3,7 +3,7 @@ import * as classes from './4.11-getRandomNodeBT';
 
 function runSampling(values, obj, samples) {
   for (let i = 0; i < samples; ++i) {
-    let val = obj.randomNode().val;
+    let val = obj.randomNode().value;
     values[val - 1] = true;
   }
 }
@@ -19,9 +19,9 @@ for (let key in classes) {
 
     it('returns single number when only one item in tree', function() {
       this.obj.insert(1);
-      expect(this.obj.randomNode().val).to.equal(1);
-      expect(this.obj.randomNode().val).to.equal(1);
-      expect(this.obj.randomNode().val).to.equal(1);
+      expect(this.obj.randomNode().value).to.equal(1);
+      expect(this.obj.randomNode().value).to.equal(1);
+      expect(this.obj.randomNode().value).to.equal(1);
     });
 
     [
@@ -50,7 +50,7 @@ for (let key in classes) {
         });
 
         it('returns random number in range', function() {
-          expect(this.obj.randomNode().val).to.be.within(1, 15);
+          expect(this.obj.randomNode().value).to.be.within(1, 15);
         });
 
         it('returns all numbers in range over 1000 calls', function() {
