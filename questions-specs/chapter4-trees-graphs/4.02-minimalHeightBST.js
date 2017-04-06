@@ -10,11 +10,11 @@ export function minimalHeightBST(arr) {
 function createMinimalHeightBST(arr, start, end) {
   if (start > end) return null;
 
-  const middle = Math.ceil((start + end) / 2),
-        rootNode = new TreeNode(arr[middle]);
+  const middleIndex = Math.ceil((start + end) / 2),
+        rootNode = new TreeNode(arr[middleIndex]);
 
-  rootNode.left = createMinimalHeightBST(arr, start, middle - 1);
-  rootNode.right = createMinimalHeightBST(arr, middle + 1, end);
+  rootNode.left = createMinimalHeightBST(arr, start, middleIndex - 1);
+  rootNode.right = createMinimalHeightBST(arr, middleIndex + 1, end);
 
   return rootNode;
 }

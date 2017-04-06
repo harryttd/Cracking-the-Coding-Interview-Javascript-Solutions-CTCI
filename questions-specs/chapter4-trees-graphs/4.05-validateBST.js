@@ -53,15 +53,9 @@ EXAMPLE:
       10    10
 */
 
-class Integer {
-  constructor() {
-    this.value = null;
-  }
-}
-
 export function isValidBST_3(tree) {
   if (!tree) throw Error('invalid tree');
-  return validateBST_3(tree.root, new Integer());
+  return validateBST_3(tree.root, {value: null});
 }
 
 function validateBST_3(tree, previous) {
