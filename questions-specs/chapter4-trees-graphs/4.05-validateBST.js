@@ -28,7 +28,7 @@ function validateBST_1(node) {
 
 // O(N) TIME --- O(log N) SPACE - WORST CASE O(N)
 
-const typeIsNumber = (value) => typeof value === 'number';
+const isNumber = (value) => typeof value === 'number';
 
 export function isValidBST_2(tree) {
   if (!tree) throw Error('invalid tree');
@@ -38,7 +38,7 @@ export function isValidBST_2(tree) {
 function validateBST_2(node, minValue, maxValue) {
   if (!node) return true;
 
-  if ((typeIsNumber(minValue) && node.value <= minValue) || (typeIsNumber(maxValue) && node.value > maxValue)) return false;
+  if ((isNumber(minValue) && node.value <= minValue) || (isNumber(maxValue) && node.value > maxValue)) return false;
 
   return validateBST_2(node.left, minValue, node.value) && validateBST_2(node.right, node.value, maxValue);
 }
