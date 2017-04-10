@@ -64,6 +64,7 @@ export function linkedListPalindrome2(list) {
   // Only need to check to half of length
   const halfLength = lengthCounter / 2;
   node = list;
+
   while (lengthCounter-- > halfLength) {
     if (node.value !== head.value) return false;
     node = node.next;

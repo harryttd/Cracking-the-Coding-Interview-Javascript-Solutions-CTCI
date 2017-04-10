@@ -53,7 +53,7 @@ EXAMPLE:
       10    10
 */
 
-export function noDupesIsValidBST_3(tree) {
+export function noDupesIsValidBST(tree) {
   if (!tree) throw Error('invalid tree');
   return validateBST_3(tree.root, {value: null});
 }

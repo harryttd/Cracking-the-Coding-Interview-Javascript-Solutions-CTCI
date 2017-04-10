@@ -11,6 +11,18 @@ for (let key in funcs) {
 
 }
 
+// def test_bfs(self):
+//         graph = {
+//             'A':['B', 'C', 'D'],
+//             'B':['E', 'F'],
+//             'C':['G'],
+//             'G':['H'],
+//             'I':['Z']
+//         }
+//         self.assertTrue(path_bfs('A', 'H', graph))
+//         self.assertTrue(path_dfs('A', 'H', graph))
+//         self.assertTrue(path_dfs_r('A', 'H', graph))
+
 class Graph {
   constructor() {
     this.maxVertices = 6;

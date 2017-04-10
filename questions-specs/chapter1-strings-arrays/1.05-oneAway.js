@@ -6,16 +6,16 @@ export function oneAway(str1, str2) {
 
   if (Math.abs(str1Length - str2Length) > 1) return false;
 
-  let insertion = str1Length < str2Length,
-      deleteChar = !insertion && str1Length !== str2Length,
+  let isInsertion = str1Length < str2Length,
+      isDeletedChar = !isInsertion && str1Length !== str2Length,
       isEdited = false,
       i, x;
 
   for (i = x = 0; i < str1Length && x < str2Length; i++, x++) {
     if (str1[i] !== str2[x]) {
       if (isEdited) return false;
-      if (insertion) i--;
-      else if (deleteChar) x--;
+      if (isInsertion) i--;
+      else if (isDeletedChar) x--;
       isEdited = true;
     }
   }

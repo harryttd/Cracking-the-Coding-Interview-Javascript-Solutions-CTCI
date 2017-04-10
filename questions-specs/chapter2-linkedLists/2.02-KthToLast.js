@@ -35,10 +35,7 @@ export function KthToLast2(list, k) {
 
   if (indexCounter < k) throw Error('list is not long enough');
 
-  while (indexCounter > k) {
-    list = list.next;
-    indexCounter--;
-  }
+  while (indexCounter-- > k) list = list.next;
 
   return list.value;
 }

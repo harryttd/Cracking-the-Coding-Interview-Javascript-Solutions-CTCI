@@ -31,24 +31,7 @@ for (let key in funcs) {
       expect(func(this.tree)).to.be.true;
     });
 
-    if (func.name !== 'noDupesIsValidBST_3') {
-      it('returns true for BST with duplicate values', function() {
-        // Tree class maintains BST property so this should be valid
-        [10, 10, 15].forEach(v => this.tree.add(v));
-        expect(func(this.tree)).to.be.true;
-
-        this.tree.root.right.value = 10;
-        expect(func(this.tree)).to.be.false;
-        this.tree.root.right = null;
-
-        [5, 10, 15, 20, 0, 5].forEach(v => this.tree.add(v));
-        expect(func(this.tree)).to.be.true;
-        [20, 5, 25, 0].forEach(v => this.tree.add(v));
-        expect(func(this.tree)).to.be.true;
-        [25, 30, 1, 2, 3, 4, 5].forEach(v => this.tree.add(v));
-        expect(func(this.tree)).to.be.true;
-      });
-    } else {
+    if (func.name === 'noDupesIsValidBST') {
       it('fails for binary tree with duplicate values', function() {
         [10, 10, 15].forEach(v => this.tree.add(v));
 
@@ -61,6 +44,23 @@ for (let key in funcs) {
 
         this.tree.root.right.right.value = 15;
 
+        [20, 5, 25, 0].forEach(v => this.tree.add(v));
+        expect(func(this.tree)).to.be.true;
+        [25, 30, 1, 2, 3, 4, 5].forEach(v => this.tree.add(v));
+        expect(func(this.tree)).to.be.true;
+      });
+    } else {
+      it('returns true for BST with duplicate values', function() {
+        // Tree class maintains BST property so this should be valid
+        [10, 10, 15].forEach(v => this.tree.add(v));
+        expect(func(this.tree)).to.be.true;
+
+        this.tree.root.right.value = 10;
+        expect(func(this.tree)).to.be.false;
+        this.tree.root.right = null;
+
+        [5, 10, 15, 20, 0, 5].forEach(v => this.tree.add(v));
+        expect(func(this.tree)).to.be.true;
         [20, 5, 25, 0].forEach(v => this.tree.add(v));
         expect(func(this.tree)).to.be.true;
         [25, 30, 1, 2, 3, 4, 5].forEach(v => this.tree.add(v));
