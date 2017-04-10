@@ -47,7 +47,7 @@ class Graph {
 
 class GraphNode {
   constructor(vertex, adjacentLength) {
-    this.adjacent = new Array(adjacentLength).fill(0);
+    this.adjacent = new Array(adjacentLength || 6);
     this.vertex = vertex;
     this.adjacentCount = 0;
     this.visited = false;
