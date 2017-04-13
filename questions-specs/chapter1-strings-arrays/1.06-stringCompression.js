@@ -16,7 +16,7 @@ export function stringCompression1(str) {
   let compressedString = '',
       previousLetter;
 
-  for (let letter of str) {
+  for (const letter of str) {
     if (letter !== previousLetter) {
       if (!charMap.has(letter)) {
         charMap.set(letter, 1);

@@ -32,14 +32,15 @@ export function graphSearchBFS(graph, start, target) {
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
+// O(E) TIME --- O(V) SPACE
+// RECURSIVE DEPTH FIRST SEARCH
+
 export function graphSearchDFS(graph, start, target) {
   if (!Array.isArray(graph)) throw Error('invalid graph');
   if (!graph[start]) throw Error('invalid start node');
   return searchDFS(graph, start, target, new Set());
 }
 
-// O(E) TIME --- O(V) SPACE
-// RECURSIVE DEPTH FIRST SEARCH
 function searchDFS(graph, start, target, visited) {
   if (start === target) return true;
 

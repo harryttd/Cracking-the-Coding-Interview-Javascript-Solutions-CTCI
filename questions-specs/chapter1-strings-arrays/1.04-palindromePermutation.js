@@ -9,7 +9,7 @@ export function palindromePermutation(str) {
   str = str.toLowerCase();
 
   const letterMap = new Set();
-  for (let letter of str) {
+  for (const letter of str) {
     if (letter !== ' ') {
       if (letterMap.has(letter)) letterMap.delete(letter);
       else letterMap.add(letter);
