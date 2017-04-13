@@ -1,97 +1,57 @@
 'use strict';
 
- function graphSearchBFS(graph, start, end) {
-  if (start === end) return true;
+// E = Edges
+// V = Vertices
+
+// O(E) TIME --- O(V) SPACE
+// ITERATIVE BREADTH FIRST SEARCH
+export function graphSearchBFS(graph, start, target) {
+  if (!Array.isArray(graph)) throw Error('invalid graph');
+  if (!graph[start]) throw Error('invalid start node');
+
+  if (start === target) return true;
 
   const visited = new Set(),
         queue = [start];
 
   while (queue.length) {
     const currentNode = queue.shift();
-    for (let neighbour of graph[currentNode]) {
+    if (graph[currentNode]) {
+      for (const neighbour of graph[currentNode]) {
+        if (!visited.has(neighbour)) {
+          if (neighbour === target) return true;
+          visited.add(neighbour);
+          queue.push(neighbour);
+        }
+      }
+    }
+  }
+
+  return false;
+}
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+export function graphSearchDFS(graph, start, target) {
+  if (!Array.isArray(graph)) throw Error('invalid graph');
+  if (!graph[start]) throw Error('invalid start node');
+  return searchDFS(graph, start, target, new Set());
+}
+
+// O(E) TIME --- O(V) SPACE
+// RECURSIVE DEPTH FIRST SEARCH
+function searchDFS(graph, start, target, visited) {
+  if (start === target) return true;
+
+  visited.add(start);
+
+  if (graph[start]) {
+    for (const neighbour of graph[start]) {
       if (!visited.has(neighbour)) {
-        if (neighbour === end) return true;
-        visited.add(neighbour);
-        queue.push(neighbour);
+        if (searchDFS(graph, neighbour, target, visited)) return true;
       }
     }
   }
 
   return false;
 }
-
-function graphSearchDFS(graph, source, target, visited = new Set()) {
-  if (source === target) return true;
-
-  visited.add(source);
-
-  for (let neighbour of graph[source]) {
-    if (!visited.has(neighbour)) {
-      if (graphSearchDFS(graph, neighbour, target, visited)) return true;
-    }
-  }
-
-  return false;
-}
-
-const doBFS = function(graph, source) {
-  const bfsInfo = [];
-
-  for (let i = 0; i < graph.length; i++) {
-    bfsInfo[i] = {
-      distance: null,
-      predecessor: null };
-    }
-
-  bfsInfo[source].distance = 0;
-
-  const queue = [source];
-
-  // Traverse the graph
-
-  // As long as the queue is not empty:
-  //  Repeatedly dequeue a vertex v from the queue.
-  //
-  //  For each neighbor n of v that has not been visited:
-  //     Set distance to 1 greater than v's distance
-  //     Set predecessor to n
-  //     Enqueue n
-  //
-  //
-  //  use graph to get the neighbors,
-  //  use bfsInfo for distances and predecessors
-
-  while (queue.length) {
-    const current = queue.shift();
-    for (let i = 0; i < graph[current].length; i++) {
-      const node = graph[current][i];
-      if (bfsInfo[node].distance === null) {
-        bfsInfo[node].distance = bfsInfo[current].distance + 1;
-        bfsInfo[node].predecessor = current;
-        queue.push(node);
-      }
-    }
-  }
-
-  return bfsInfo;
-};
-
-const adjList = [
-  [1],
-  [0, 4, 5],
-  [3, 4, 5],
-  [2, 6],
-  [1, 2],
-  [1, 2, 6],
-  [3, 5],
-  []
-];
-
-const bfsInfo = doBFS(adjList, 3);
-console.log(bfsInfo);
-
-const searchBFS = graphSearchBFS(adjList, 6, 6);
-console.log(searchBFS);
-
-const searchDFS = graphSearchDFS(adjList, 6, 0);
-console.log(searchDFS);

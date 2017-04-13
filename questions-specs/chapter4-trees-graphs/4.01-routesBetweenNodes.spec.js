@@ -3,70 +3,48 @@ import * as helpers from './helpers';
 import * as funcs from './4.01-routesBetweenNodes';
 
 for (let key in funcs) {
-//  let func = funcs[key];
+ const func = funcs[key];
 
-  xdescribe('ch4-q01: ' + key, function() {
-    // TODO
+  beforeEach(function() {
+    this.adjList = [
+      [1],
+      [0, 4, 5],
+      [3, 4, 5],
+      [2, 6],
+      [1, 2],
+      [1, 2, 6],
+      [3, 5],
+      [7]
+    ];
   });
 
-}
+  describe('ch4-q01: ' + key, function() {
 
-// def test_bfs(self):
-//         graph = {
-//             'A':['B', 'C', 'D'],
-//             'B':['E', 'F'],
-//             'C':['G'],
-//             'G':['H'],
-//             'I':['Z']
-//         }
-//         self.assertTrue(path_bfs('A', 'H', graph))
-//         self.assertTrue(path_dfs('A', 'H', graph))
-//         self.assertTrue(path_dfs_r('A', 'H', graph))
+    it('throws error with invalid graph', function() {
+      expect(() => func(null)).to.throw('invalid graph');
+      expect(() => func(undefined)).to.throw('invalid graph');
+    });
 
-class Graph {
-  constructor() {
-    this.maxVertices = 6;
-    this.vertices = new Array(this.maxVertices).fill(0);
-    this.count = 0;
-  }
+    it('throws error with invalid start node', function() {
+      expect(() => func(this.adjList, 99)).to.throw('invalid start node');
+    });
 
-  addNode(node) {
-    if (this.count < this.maxVertices) {
-      this.vertices[this.count] = node;
-      this.count++;
-    } else {
-      throw Error('graph is full');
-    }
-  }
+    it('returns correct true/false for single node graph', function() {
+      const list = [ [4] ];
+      expect(func(list, 0, 4)).to.be.true;
+      expect(func(list, 0, 3)).to.be.false;
+    });
 
-  getNode() {
-    return this.vertices;
-  }
+    it('returns correct true/false for larger graph', function() {
+      expect(func(this.adjList, 0, 4)).to.be.true;
+      expect(func(this.adjList, 0, 3)).to.be.true;
+      expect(func(this.adjList, 3, 6)).to.be.true;
 
-}
+      expect(func(this.adjList, 7, 3)).to.be.false;
+      expect(func(this.adjList, 6, 7)).to.be.false;
+      expect(func(this.adjList, 1, 11)).to.be.false;
+    });
 
-class GraphNode {
-  constructor(vertex, adjacentLength) {
-    this.adjacent = new Array(adjacentLength || 6);
-    this.vertex = vertex;
-    this.adjacentCount = 0;
-    this.visited = false;
-  }
+  });
 
-  addAdjacent(node) {
-    if (this.adjacentCount < this.adjacent.length) {
-      this.adjacent[this.adjacentCount] = node;
-      this.adjacentCount++;
-    } else {
-      throw Error('adjacent nodes are full');
-    }
-  }
-
-  getAdjacent() {
-    return this.adjacent;
-  }
-
-  getVertex() {
-    return this.vertex;
-  }
 }
