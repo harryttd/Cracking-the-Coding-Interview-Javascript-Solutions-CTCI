@@ -23,13 +23,11 @@ export function graphSearchBFS(graph, start, target) {
 
   while (queue.length) {
     const currentNode = queue.shift();
-    if (graph[currentNode]) {
-      for (const neighbour of graph[currentNode]) {
-        if (!visited.has(neighbour)) {
-          if (neighbour === target) return true;
-          visited.add(neighbour);
-          queue.push(neighbour);
-        }
+    for (const neighbour of graph[currentNode]) {
+      if (!visited.has(neighbour)) {
+        if (neighbour === target) return true;
+        visited.add(neighbour);
+        queue.push(neighbour);
       }
     }
   }
@@ -52,11 +50,9 @@ function searchDFS(graph, start, target, visited) {
 
   visited.add(start);
 
-  if (graph[start]) {
-    for (const neighbour of graph[start]) {
-      if (!visited.has(neighbour)) {
-        if (searchDFS(graph, neighbour, target, visited)) return true;
-      }
+  for (const neighbour of graph[start]) {
+    if (!visited.has(neighbour)) {
+      if (searchDFS(graph, neighbour, target, visited)) return true;
     }
   }
 
