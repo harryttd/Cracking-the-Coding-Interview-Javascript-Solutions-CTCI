@@ -1,13 +1,20 @@
 'use strict';
 
+const errorCheck = (graph, start) => {
+  if (!Array.isArray(graph)) throw Error('invalid graph');
+  if (!graph[start]) throw Error('invalid start node');
+};
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
 // E = Edges
 // V = Vertices
 
 // O(E) TIME --- O(V) SPACE
 // ITERATIVE BREADTH FIRST SEARCH
+
 export function graphSearchBFS(graph, start, target) {
-  if (!Array.isArray(graph)) throw Error('invalid graph');
-  if (!graph[start]) throw Error('invalid start node');
+  errorCheck(graph, start);
 
   if (start === target) return true;
 
@@ -36,8 +43,7 @@ export function graphSearchBFS(graph, start, target) {
 // RECURSIVE DEPTH FIRST SEARCH
 
 export function graphSearchDFS(graph, start, target) {
-  if (!Array.isArray(graph)) throw Error('invalid graph');
-  if (!graph[start]) throw Error('invalid start node');
+  errorCheck(graph, start);
   return searchDFS(graph, start, target, new Set());
 }
 

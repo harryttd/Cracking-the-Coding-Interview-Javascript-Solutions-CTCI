@@ -1,18 +1,26 @@
 {
-  "name": "CTCI",
+  "name": "javascript-ctci-solutions",
   "version": "1.0.0",
-  "description": "",
+  "description": "Javascript solutions to Cracking the Coding Interview (CTCI)",
   "main": "",
   "scripts": {
     "test": "nodemon ./node_modules/.bin/mocha"
   },
-  "keywords": [],
+  "keywords": [
+    "Cracking the Coding Interview",
+    "CTCI",
+    "javascript",
+    "mocha",
+    "chai",
+    "es6"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "babel-core": "^6.0.15",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.0.15",
     "chai": "^3.5.0",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "nodemon": "^1.11.0"
   }
 }

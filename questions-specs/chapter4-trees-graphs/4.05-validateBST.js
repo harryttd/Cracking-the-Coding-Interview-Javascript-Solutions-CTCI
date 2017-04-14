@@ -25,7 +25,6 @@ function validateBST_1(node) {
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-
 // O(N) TIME --- O(log N) SPACE - WORST CASE O(N)
 
 const isNumber = (value) => typeof value === 'number';
