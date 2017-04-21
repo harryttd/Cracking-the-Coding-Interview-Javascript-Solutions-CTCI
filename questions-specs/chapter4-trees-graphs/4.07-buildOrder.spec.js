@@ -4,7 +4,7 @@ import * as funcs from './4.07-buildOrder';
 for (let key in funcs) {
   let func = funcs[key];
 
-  xdescribe('ch4-q07: ' + key, function() {
+  describe('ch4-q07: ' + key, function() {
 
     it('returns project where there is only one project', function() {
       expect(func([11], [])).to.eql([11]);
