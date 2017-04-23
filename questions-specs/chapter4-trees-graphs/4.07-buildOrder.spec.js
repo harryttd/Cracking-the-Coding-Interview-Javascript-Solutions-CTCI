@@ -2,7 +2,7 @@ import { expect } from 'chai';
 import * as funcs from './4.07-buildOrder';
 
 for (let key in funcs) {
-  let func = funcs[key];
+  const func = funcs[key];
 
   describe('ch4-q07: ' + key, function() {
 
@@ -16,9 +16,9 @@ for (let key in funcs) {
 
     it('returns in the right order with simple chain of dependencies', function() {
       expect(func([9, 1, 5, 6], [
-        [6, 5],
-        [5, 1],
-        [1, 9]
+        [5, 6],
+        [1, 5],
+        [9, 1]
       ])).to.eql([9, 1, 5, 6]);
     });
 
@@ -32,7 +32,7 @@ for (let key in funcs) {
     });
 
     it('correctly orders with larger acyclic graph', function() {
-      expect(func([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], [
+      const dependencies = [
         [2, 1],
         [3, 1],
         [4, 2],
@@ -48,7 +48,11 @@ for (let key in funcs) {
         [13, 10],
         [13, 9],
         [14, 13]
-      ])).to.eql([15, 1, 3, 7, 9, 5, 2, 6, 10, 13, 14, 4, 8, 12, 11]);
+      ].map(dep => dep.reverse());
+
+      const result = [15, 1, 3, 7, 9, 5, 2, 6, 10, 13, 14, 4, 8, 12, 11];
+
+      expect(func([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15], dependencies)).to.eql(result);
     });
 
   });
