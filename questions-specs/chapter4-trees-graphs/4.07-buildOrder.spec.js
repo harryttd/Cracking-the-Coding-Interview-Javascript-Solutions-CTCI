@@ -31,6 +31,17 @@ for (let key in funcs) {
       ])).to.throw('dependencies are cyclic');
     });
 
+    it('passes book example', function() {
+      expect(func(["a", "b", "c", "d", "e", "f"],
+        [
+          ["a", "d"],
+          ["f", "b"],
+          ["b", "d"],
+          ["f", "a"],
+          ["d", "c"]]
+      )).to.eql(["f", "e", "b", "a", "d", "c"]);
+    });
+
     it('correctly orders with larger acyclic graph', function() {
       const dependencies = [
         [2, 1],

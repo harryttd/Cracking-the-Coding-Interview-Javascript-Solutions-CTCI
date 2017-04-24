@@ -2,35 +2,30 @@
 
 export function buildOrder(projects, dependencies) {
   const adjList = {},
-        result = [],
-        visited = new Set(),
+        result = new Set(),
         path = new Set();
 
-  // create adjacency matrix
+  // create adjacency list
   projects.forEach(project => adjList[project] = []);
+                                    // project     // dependent
   dependencies.forEach(edge => adjList[edge[0]].push(edge[1]));
-
   // run topological sort
-  projects.forEach(project => topologicalSort(project, adjList, visited, path, result));
-  return result.reverse();
+  projects.forEach(project => topologicalSort(project, adjList, path, result));
+
+  return [...result].reverse();
 }
 
-function topologicalSort(project, adjList, visited, path, result) {
-  if (visited.has(project)) return;
+function topologicalSort(project, adjList, path, result) {
+  if (!result.has(project)) {
 
-  visited.add(project);
-  path.add(project);
+    path.add(project);
 
-  for (const neighbour of adjList[project]) {
-    if (path.has(neighbour)) throw new Error('dependencies are cyclic');
-    topologicalSort(neighbour, adjList, visited, path, result);
+    for (const dependent of adjList[project]) {
+      if (path.has(dependent)) throw new Error('dependencies are cyclic');
+      topologicalSort(dependent, adjList, path, result);
+    }
+
+    path.delete(project);
+    result.add(project);
   }
-
-  path.delete(project);
-  result.push(project);
 }
-
-const projects = ["a", "b", "c", "d", "e", "f"];
-const dependencies = [["a", "d"], ["f", "b"], ["b", "d"], ["f", "a"], ["d", "c"]];
-
-console.log(buildOrder(projects, dependencies));
