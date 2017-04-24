@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import * as funcs from './palindrome';
 
-for (let key in funcs) {
+for (const key in funcs) {
   const func = funcs[key];
 
   describe('MISC - Palindrome: ' + key, function() {
