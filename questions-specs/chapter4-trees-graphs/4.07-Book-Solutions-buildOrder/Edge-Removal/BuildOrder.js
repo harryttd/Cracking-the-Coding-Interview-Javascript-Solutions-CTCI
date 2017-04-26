@@ -1,7 +1,6 @@
 'use strict';
 
 import Graph from './Graph';
-import Project from './Project';
 
 export class BuildOrder {
   constructor() {
@@ -22,7 +21,7 @@ export class BuildOrder {
 
   addNonDependent(order, projects, offset) {
     for (const project of projects) {
-      if (project[1].getNumberDependencies() === 0) {
+      if (!project[1].getNumberDependencies()) {
         order[offset] = project;
         offset++;
       }
@@ -31,7 +30,7 @@ export class BuildOrder {
   }
 
   orderProjects(projects) {
-    const order = new Array(projects.size);
+    const order = new Array(projects.size).fill(null);
 
     /* Add “roots” to the build order first.*/
     let endOfList = this.addNonDependent(order,   projects, 0);
@@ -60,21 +59,11 @@ export class BuildOrder {
   }
 
   convertToArray(projects) {
-    projects = [...projects];
-    const length = projects.length;
-    const buildOrder = new Array(length);
-    // console.log(projects);
-    for (let i = 0; i < length; i++) {
-      buildOrder[i] = projects[i][1].getName();
-    }
-    // console.log([...projects]);
+    const buildOrder = new Array(projects.length);
+    projects.forEach((project, i) => {
+      buildOrder[i] = project[1].getName();
+    });
     return buildOrder;
-    // projects.forEach((project, i) => {
-    //   // console.log(project, i);
-    //   buildOrder[i] = project[1].getName();
-    // });
-
-    // return buildOrder;
   }
 
   findBuildOrder(projects, dependencies) {
@@ -94,7 +83,6 @@ export class BuildOrder {
     if (buildOrder === null) {
       throw Error('dependencies are cyclic');
     }
-    console.log(buildOrder);
     return buildOrder;
   }
 

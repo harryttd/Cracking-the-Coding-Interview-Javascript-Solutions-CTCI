@@ -13,8 +13,8 @@ export default class Project {
 
   addNeighbor(node) {
     if (!this.children.has(node)) {
-      this.children.set(node.getName(), node);
       node.incrementDependencies();
+      this.children.set(node.getName(), node);
     }
   }
 
