@@ -2,20 +2,21 @@
 
 export default class Project {
 	constructor(name) {
-    const State = {COMPLETE: 'COMPLETE', PARTIAL: 'PARTIAL', BLANK: 'BLANK'};
     this.name = name;
-    this.state = State.BLANK;
+    this.state = this.constructor.State().BLANK;
     this.children = new Set();
   }
+
+	static State() {
+		return {COMPLETE: 'COMPLETE', PARTIAL: 'PARTIAL', BLANK: 'BLANK'};
+	}
 
 	getName() {
 		return this.name;
 	}
 
 	addNeighbor(node) {
-    if (!this.children.has(node)) {
-      this.children.add(node);
-    }
+    this.children.add(node);
 	}
 
 	getState() {
@@ -29,4 +30,5 @@ export default class Project {
   getChildren() {
 		return this.children;
 	}
+
 }

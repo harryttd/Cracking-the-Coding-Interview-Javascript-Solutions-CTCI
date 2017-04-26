@@ -1,7 +1,6 @@
 'use strict';
 
 import Project from './Project';
-// const Project = require('./Project');
 
 export default class Graph {
   constructor() {
@@ -17,15 +16,14 @@ export default class Graph {
 		return this.nodes.get(node);
 	}
 
-	addEdge(startName, endName) {
-		const start = this.getOrCreateNode(startName);
-		const end = this.getOrCreateNode(endName);
+	addEdge(project, dependent) {
+		const start = this.getOrCreateNode(project);
+		const end = this.getOrCreateNode(dependent);
 		start.addNeighbor(end);
 	}
 
 	getNodes() {
 		return this.nodes;
 	}
-}
 
-// module.exports = Graph;
+}

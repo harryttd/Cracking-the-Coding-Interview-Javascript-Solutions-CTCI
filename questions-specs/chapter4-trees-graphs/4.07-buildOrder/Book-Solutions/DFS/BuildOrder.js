@@ -1,8 +1,9 @@
 'use strict';
 
 import Graph from './Graph';
+import Project from './Project';
 
-export default class Question {
+export class BuildOrder {
   constructor() {
     this.graph = new Graph();
   }
@@ -20,19 +21,19 @@ export default class Question {
 	}
 
 	doDFS(project, stack) {
-		if (project.getState() === "PARTIAL") {
+		if (project.getState() === Project.State().PARTIAL) {
 			return false; // Cycle
 		}
 
-		if (project.getState() === "BLANK") {
-			project.setState("PARTIAL");
+		if (project.getState() === Project.State().BLANK) {
+			project.setState(Project.State().PARTIAL);
 			const children = project.getChildren();
 			for (const child of children) {
 				if (!this.doDFS(child, stack)) {
 					return false;
 				}
 			}
-			project.setState("COMPLETE");
+			project.setState(Project.State().COMPLETE);
 			stack.push(project);
 		}
 		return true;
@@ -40,8 +41,8 @@ export default class Question {
 
   orderProjects(projects) {
 		const stack = [];
-		for (let project of projects) {
-			if (project[1].getState() === "BLANK") {
+		for (const project of projects) {
+			if (project[1].getState() === Project.State().BLANK) {
 				if (!this.doDFS(project[1], stack)) {
 					return null;
 				}
@@ -50,9 +51,10 @@ export default class Question {
 		return stack;
 	}
 
-  convertToStringList(projects) {
-		const buildOrder = new Array(projects.length);
-		for (let i = 0; i < buildOrder.length; i++) {
+  convertToArray(projects) {
+    const length = projects.length;
+		const buildOrder = new Array(length);
+		for (let i = 0; i < length; i++) {
 			buildOrder[i] = projects.pop().getName();
 		}
 		return buildOrder;
@@ -66,7 +68,7 @@ export default class Question {
 	buildOrderWrapper(projects, dependencies) {
 		const buildOrder = this.findBuildOrder(projects, dependencies);
 		if (buildOrder === null) return null;
-		const buildOrderString = this.convertToStringList(buildOrder);
+		const buildOrderString = this.convertToArray(buildOrder);
 		return buildOrderString;
 	}
 
