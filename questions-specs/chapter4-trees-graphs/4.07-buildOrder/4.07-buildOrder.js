@@ -9,6 +9,7 @@ export function buildOrder(projects, dependencies) {
   projects.forEach(project => adjList[project] = []);
                                     // project     // dependent
   dependencies.forEach(edge => adjList[edge[0]].push(edge[1]));
+
   // run topological sort
   projects.forEach(project => topologicalSort(project, adjList, path, result));
 

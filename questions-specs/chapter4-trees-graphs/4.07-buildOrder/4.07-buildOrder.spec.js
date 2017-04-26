@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import * as funcs from './4.07-buildOrder';
 
-for (let key in funcs) {
+for (const key in funcs) {
   const func = funcs[key];
 
   describe('ch4-q07: ' + key, function() {
@@ -38,28 +38,29 @@ for (let key in funcs) {
           ["f", "b"],
           ["b", "d"],
           ["f", "a"],
-          ["d", "c"]]
+          ["d", "c"]
+        ]
       )).to.eql(["f", "e", "b", "a", "d", "c"]);
     });
 
     it('correctly orders with larger acyclic graph', function() {
       const dependencies = [
-        [2, 1],
-        [3, 1],
-        [4, 2],
-        [6, 2],
-        [5, 3],
-        [7, 3],
-        [8, 4],
-        [11, 8],
-        [12, 8],
-        [10, 6],
-        [10, 5],
-        [9, 7],
-        [13, 10],
-        [13, 9],
-        [14, 13]
-      ].map(dep => dep.reverse());
+        [1, 2],
+        [1, 3],
+        [2, 4],
+        [2, 6],
+        [3, 5],
+        [3, 7],
+        [4, 8],
+        [8, 11],
+        [8, 12],
+        [6, 10],
+        [5, 10],
+        [7, 9],
+        [10, 13],
+        [9, 13],
+        [13, 14]
+      ];
 
       const result = [15, 1, 3, 7, 9, 5, 2, 6, 10, 13, 14, 4, 8, 12, 11];
 
