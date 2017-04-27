@@ -5,7 +5,7 @@ import * as funcs from './4.08-firstCommonAncestor';
 for (let key in funcs) {
   let func = funcs[key];
 
-  xdescribe('ch4-q08: ' + key, function() {
+  describe('ch4-q08: ' + key, function() {
 
     beforeEach(function() {
       this.tree = new Tree();
@@ -13,9 +13,9 @@ for (let key in funcs) {
 
     it('throws an error if either node is null', function() {
       this.tree.add(1);
-      expect(() => func(null, null)).to.throw('node1 and node2 must both be valid nodes');
-      expect(() => func(this.tree.root, null)).to.throw('node1 and node2 must both be valid nodes');
-      expect(() => func(null, this.tree.root)).to.throw('node1 and node2 must both be valid nodes');
+      expect(() => func(null, null)).to.throw('invalid node(s)');
+      expect(() => func(this.tree.root, null)).to.throw('invalid node(s)');
+      expect(() => func(null, this.tree.root)).to.throw('invalid node(s)');
     });
 
     it('returns right value for simple 3 node balanced tree', function() {

@@ -3,6 +3,8 @@
 import Graph from './Graph';
 import Project from './Project';
 
+// O(PROJECTS + DEPENDENCY PAIRS) TIME
+
 export class BuildOrder {
   constructor() {
     this.graph = new Graph();
