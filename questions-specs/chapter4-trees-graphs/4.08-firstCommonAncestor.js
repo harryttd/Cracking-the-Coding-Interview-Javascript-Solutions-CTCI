@@ -22,6 +22,7 @@ export function firstCommonAncestor1(node1, node2) {
     deeper = deeper.parent;
   }
 
+  return null;
 }
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
@@ -32,10 +33,9 @@ export function firstCommonAncestor1(node1, node2) {
 
 export function firstCommonAncestor2(node1, node2, tree) {
   if (!node1 || !node2) throw Error('invalid node(s)');
-
-  // if (!covers(tree, node1) || !covers(tree, node2)) return null;
-  if (covers(node1, node2)) return node1.value;
-  if (covers(node2, node1)) return node2.value;
+  else if (!covers(tree, node1) || !covers(tree, node2)) return null;
+  else if (covers(node1, node2)) return node1.value;
+  else if (covers(node2, node1)) return node2.value;
 
   let sibling = getSibling(node1), parent = node1.parent;
 

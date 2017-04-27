@@ -18,35 +18,49 @@ for (let key in funcs) {
       expect(() => func(null, this.tree.root)).to.throw('invalid node(s)');
     });
 
+    it('returns null for node that is not in tree', function() {
+      [10, 9, 11].forEach(v => this.tree.add(v));
+      const node = {
+        value: 100,
+        left: null,
+        right: null,
+        parent: null
+      };
+
+      expect(func(this.tree.root, node)).to.equal(null);
+      expect(func(this.tree.root.left, node)).to.equal(null);
+      expect(func(this.tree.root.right, node)).to.equal(null);
+    });
+
     it('returns correct value for simple 3 node balanced tree', function() {
       [10, 9, 11].forEach(v => this.tree.add(v));
-      expect(func(this.tree.root.left, this.tree.root.right, this.tree)).to.equal(10);
-      expect(func(this.tree.root, this.tree.root.right, this.tree)).to.equal(10);
-      expect(func(this.tree.root.left, this.tree.root, this.tree)).to.equal(10);
+      expect(func(this.tree.root.left, this.tree.root.right, this.tree.root)).to.equal(10);
+      expect(func(this.tree.root, this.tree.root.right, this.tree.root)).to.equal(10);
+      expect(func(this.tree.root.left, this.tree.root, this.tree.root)).to.equal(10);
     });
 
     it('returns correct values for larger balanced tree', function() {
       [8, 4, 12, 2, 6, 10, 14, 1, 3, 5, 7, 9, 11, 13, 15].forEach(v => this.tree.add(v));
 
-      expect(func(this.tree.root.left.left.left, this.tree.root.left.left.left, this.tree)).to.equal(1);
-      expect(func(this.tree.root.left.left.left, this.tree.root.left.left.right, this.tree)).to.equal(2);
-      expect(func(this.tree.root.left.left.right, this.tree.root.left.left.left, this.tree)).to.equal(2);
+      expect(func(this.tree.root.left.left.left, this.tree.root.left.left.left, this.tree.root)).to.equal(1);
+      expect(func(this.tree.root.left.left.left, this.tree.root.left.left.right, this.tree.root)).to.equal(2);
+      expect(func(this.tree.root.left.left.right, this.tree.root.left.left.left, this.tree.root)).to.equal(2);
 
-      expect(func(this.tree.root.left, this.tree.root.left, this.tree)).to.equal(4);
-      expect(func(this.tree.root.left.left.right, this.tree.root.left, this.tree)).to.equal(4);
-      expect(func(this.tree.root.left.left.right, this.tree.root.left.right, this.tree)).to.equal(4);
-      expect(func(this.tree.root.left.left.left, this.tree.root.left.right.left, this.tree)).to.equal(4);
-      expect(func(this.tree.root.left.left.left, this.tree.root.left.right.right, this.tree)).to.equal(4);
-      expect(func(this.tree.root.left.left.right, this.tree.root.left.right.left, this.tree)).to.equal(4);
-      expect(func(this.tree.root.left.left.right, this.tree.root.left.right.right, this.tree)).to.equal(4);
+      expect(func(this.tree.root.left, this.tree.root.left, this.tree.root)).to.equal(4);
+      expect(func(this.tree.root.left.left.right, this.tree.root.left, this.tree.root)).to.equal(4);
+      expect(func(this.tree.root.left.left.right, this.tree.root.left.right, this.tree.root)).to.equal(4);
+      expect(func(this.tree.root.left.left.left, this.tree.root.left.right.left, this.tree.root)).to.equal(4);
+      expect(func(this.tree.root.left.left.left, this.tree.root.left.right.right, this.tree.root)).to.equal(4);
+      expect(func(this.tree.root.left.left.right, this.tree.root.left.right.left, this.tree.root)).to.equal(4);
+      expect(func(this.tree.root.left.left.right, this.tree.root.left.right.right, this.tree.root)).to.equal(4);
 
-      expect(func(this.tree.root.left.left.right, this.tree.root, this.tree)).to.equal(8);
-      expect(func(this.tree.root.left.left.right, this.tree.root.right, this.tree)).to.equal(8);
-      expect(func(this.tree.root.left.left.right, this.tree.root.right.right, this.tree)).to.equal(8);
-      expect(func(this.tree.root.left.left.right, this.tree.root.right.left.left, this.tree)).to.equal(8);
-      expect(func(this.tree.root.left.left.right, this.tree.root.right.left.right, this.tree)).to.equal(8);
-      expect(func(this.tree.root.left.left.right, this.tree.root.right.right.left, this.tree)).to.equal(8);
-      expect(func(this.tree.root.left.left.right, this.tree.root.right.right.right, this.tree)).to.equal(8);
+      expect(func(this.tree.root.left.left.right, this.tree.root, this.tree.root)).to.equal(8);
+      expect(func(this.tree.root.left.left.right, this.tree.root.right, this.tree.root)).to.equal(8);
+      expect(func(this.tree.root.left.left.right, this.tree.root.right.right, this.tree.root)).to.equal(8);
+      expect(func(this.tree.root.left.left.right, this.tree.root.right.left.left, this.tree.root)).to.equal(8);
+      expect(func(this.tree.root.left.left.right, this.tree.root.right.left.right, this.tree.root)).to.equal(8);
+      expect(func(this.tree.root.left.left.right, this.tree.root.right.right.left, this.tree.root)).to.equal(8);
+      expect(func(this.tree.root.left.left.right, this.tree.root.right.right.right, this.tree.root)).to.equal(8);
     });
 
   });
