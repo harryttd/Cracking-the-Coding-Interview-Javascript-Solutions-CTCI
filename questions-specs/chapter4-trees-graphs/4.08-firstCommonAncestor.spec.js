@@ -34,6 +34,7 @@ for (let key in funcs) {
 
     it('returns correct value for simple 3 node balanced tree', function() {
       [10, 9, 11].forEach(v => this.tree.add(v));
+      expect(func(this.tree.root, this.tree.root, this.tree.root)).to.equal(10);
       expect(func(this.tree.root.left, this.tree.root.right, this.tree.root)).to.equal(10);
       expect(func(this.tree.root, this.tree.root.right, this.tree.root)).to.equal(10);
       expect(func(this.tree.root.left, this.tree.root, this.tree.root)).to.equal(10);
