@@ -14,11 +14,11 @@
     "chai",
     "es6"
   ],
-  "author": "",
+  "author": "Aryeh Harris",
   "license": "ISC",
   "dependencies": {
-    "babel-core": "^6.0.15",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.0.15",
+    "babel-register": "^6.24.1",
     "chai": "^3.5.0",
     "mocha": "^3.2.0",
     "nodemon": "^1.11.0"

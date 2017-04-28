@@ -5,7 +5,7 @@ import * as funcs from './4.08-firstCommonAncestor';
 for (let key in funcs) {
   let func = funcs[key];
 
-  describe.only('ch4-q08: ' + key, function() {
+  describe('ch4-q08: ' + key, function() {
 
     beforeEach(function() {
       this.tree = new Tree();
