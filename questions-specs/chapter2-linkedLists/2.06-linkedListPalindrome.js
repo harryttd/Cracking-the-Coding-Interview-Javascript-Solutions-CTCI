@@ -55,7 +55,7 @@ export function linkedListPalindrome2(list) {
 
   // Create reversed list and keep track of its length
   while (node) {
-    let newNode = createNode(node.value, head);
+    const newNode = createNode(node.value, head);
     head = newNode;
     node = node.next;
     lengthCounter++;

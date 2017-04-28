@@ -27,9 +27,9 @@ for (let key in funcs) {
         parent: null
       };
 
-      expect(func(this.tree.root, node)).to.equal(null);
-      expect(func(this.tree.root.left, node)).to.equal(null);
-      expect(func(this.tree.root.right, node)).to.equal(null);
+      expect(func(this.tree.root, node, this.tree.root)).to.equal(null);
+      expect(func(this.tree.root.left, node, this.tree.root)).to.equal(null);
+      expect(func(this.tree.root.right, node, this.tree.root)).to.equal(null);
     });
 
     it('returns correct value for simple 3 node balanced tree', function() {
