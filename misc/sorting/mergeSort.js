@@ -1,5 +1,7 @@
 'use strict';
 
+// O(N log N) TIME --- O(N) SPACE
+
 export function mergeSort(array) {
   if (array.length < 2) return array;
   const splits = split(array), left = splits[0], right = splits[1];

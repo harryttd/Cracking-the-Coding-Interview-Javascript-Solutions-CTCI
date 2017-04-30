@@ -4,4 +4,4 @@
 
 # Install
 1. Run __npm install__ or __yarn__
-2. Run __npm t__ to run tests
+2. Run __npm t__ or __yarn test__ to run tests
