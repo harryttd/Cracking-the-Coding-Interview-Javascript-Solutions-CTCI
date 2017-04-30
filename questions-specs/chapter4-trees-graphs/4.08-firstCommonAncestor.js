@@ -87,9 +87,9 @@ function findAncestor(node1, node2, tree) {
 // OPTIMIZED --- NOT USING PARENT REFERENCE
 /*
   Wraps node in 'AncestorWrapper' class with a 'isAncestor' property to indicate if the returned node is actually the ancestor.
-  Inputing a node that isn't in the tree into this function without the wrapper class or without checking first if the nodes
+  Inputing a node that isn't in the tree without the wrapper class or without checking first if the nodes
   actually exist in the tree, the function would return a false value.
-  (See also solution after this one.)
+  (See also solution after this one)
 */
 
 class AncestorWrapper {
@@ -111,19 +111,19 @@ function findCommonAncestor(node1, node2, tree) {
   if (tree === node1 && tree === node2) return new AncestorWrapper(tree, true);
 
   const checkLeft = findCommonAncestor(node1, node2, tree.left);
-  if (checkLeft.isAncestor) return checkLeft; // Found common ancestor
+  if (checkLeft.isAncestor) return checkLeft; // Already found ancestor. Don't check anymore.
 
   const checkRight = findCommonAncestor(node1, node2, tree.right);
-  if (checkRight.isAncestor) return checkRight; // Found common ancestor
+  if (checkRight.isAncestor) return checkRight; // Already found ancestor. Don't check anymore.
 
   if (checkLeft.node && checkRight.node) { // node1 and node2 found in different subtrees
-    return new AncestorWrapper(tree, true); // Return common ancestor node
+    return new AncestorWrapper(tree, true); // 'tree' we are at is the common ancestor
   }
-  else if (tree === node1 || tree === node2) {
-    const isAncestor = checkLeft.node || checkRight.node;
-    return new AncestorWrapper(tree, isAncestor);
+  else if (tree === node1 || tree === node2) { // We are at node1 or node2
+    const isAncestor = checkLeft.node || checkRight.node; // We found node1 or node2 in a subtree
+    return new AncestorWrapper(tree, isAncestor); // 'tree' is ancestor if 'isAncestor' is true
   }
-  else {
+  else { // Return non-null node
     return new AncestorWrapper(checkLeft.node ? checkLeft.node : checkRight.node, false);
   }
 
@@ -145,12 +145,12 @@ function fca(node1, node2, tree) {
   if (tree === node1 && tree === node2) return tree;
 
   const checkLeft = fca(node1, node2, tree.left);
-  if (checkLeft && checkLeft !== node1 && checkLeft !== node2) return checkLeft; // Already found ancestor
+  if (checkLeft && checkLeft !== node1 && checkLeft !== node2) return checkLeft; // Already found ancestor. Don't check anymore.
 
   const checkRight = fca(node1, node2, tree.right);
-  if (checkRight && checkRight !== node1 && checkRight !== node2) return checkRight; // Already found ancestor
+  if (checkRight && checkRight !== node1 && checkRight !== node2) return checkRight; // Already found ancestor. Don't check anymore.
 
   if (checkLeft && checkRight) return tree; // node1 and node2 found in diff. subtrees, return common ancestor
   else if (tree === node1 || tree === node2) return tree;
-  else return checkLeft ? checkLeft : checkRight; // Return non-null value
+  else return checkLeft ? checkLeft : checkRight; // Return non-null node
 }

@@ -20,7 +20,6 @@ export function merge(left, right) {
     else merged.push(right[rightIndex++]);
   }
 
-  merged.push(...left.slice(leftIndex));
-  merged.push(...right.slice(rightIndex));
+  merged.push(...left.slice(leftIndex), ...right.slice(rightIndex));
   return merged;
 }
