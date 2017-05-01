@@ -1,7 +1,8 @@
 'use strict';
 
 // USING A RUNNER
-// O(N) TIME -- O(1) SPACE
+// O(N) TIME --- O(1) SPACE
+
 export function KthToLast1(list, k) {
   if (!list) throw Error('invalid list');
 
@@ -23,6 +24,7 @@ export function KthToLast1(list, k) {
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // USING A COUNTER
+
 export function KthToLast2(list, k) {
   if (!list) throw Error('invalid list');
 
@@ -44,6 +46,7 @@ export function KthToLast2(list, k) {
 
 // RECURSIVE METHOD. ONLY PRINTS THE Kth TO LAST NODE. DOES NOT RETURN IT.
 // O(N) SPACE
+
 function printKthToLast(list, k) {
   if (!list) return 0;
   let index = printKthToLast(list.next, k) + 1;

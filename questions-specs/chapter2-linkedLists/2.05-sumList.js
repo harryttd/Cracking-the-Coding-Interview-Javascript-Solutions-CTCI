@@ -24,6 +24,8 @@ export function sumLists(list1, list2) {
   return arrayToLinkedList(numberArr);
 }
 
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
 // RECURSIVE SOLUTION
 export function sumLists2(list1, list2, carry = 0) {
   if (!list1 && !list2 && !carry) return null;

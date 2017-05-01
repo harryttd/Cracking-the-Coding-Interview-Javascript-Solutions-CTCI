@@ -3,6 +3,8 @@
 // USING REGEX
 export const isUnique1 = str => !/(.).*\1/.test(str);
 
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
 // O(N^2) TIME -- O(1) SPACE
 export function isUnique2(str) {
   const strLength = str.length;
@@ -15,6 +17,8 @@ export function isUnique2(str) {
 
   return true;
 }
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // O(N) TIME -- O(N) SPACE
 export function isUnique3(str) {

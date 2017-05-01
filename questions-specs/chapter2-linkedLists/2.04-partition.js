@@ -35,25 +35,26 @@ export function partition(list, partitionNum) {
   // return smallerHead;
 }
 
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
 // IF WE DON'T CARE ABOUT KEEPING ALL ELEMENTS "STABLE", ONLY ONES THAT NEED TO BE MOVED...
-// function partition(list, num) {
-//   let head = list,
-//       tail = list;
-//
-//   while (list) {
-//     const next = list.next;
-//     if (list.value < num) {
-//       list.next = head;
-//       head = list;
-//     } else {
-//       tail.next = list;
-//       tail = list;
-//     }
-//
-//     list = next;
-//   }
-//
-//   tail.next = null;
-//   return head;
-//
-// }
+function unstablePartition(list, num) {
+  let head = list, tail = list;
+
+  while (list) {
+    const next = list.next;
+    if (list.value < num) {
+      list.next = head;
+      head = list;
+    } else {
+      tail.next = list;
+      tail = list;
+    }
+
+    list = next;
+  }
+
+  tail.next = null;
+  return head;
+
+}

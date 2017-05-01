@@ -3,9 +3,7 @@
 // MY FIRST SOLUTION
 function compressString(map) {
   let str = '';
-  map.forEach((value, letter) => {
-    str += letter + value;
-  });
+  map.forEach((value, letter) => str += letter + value);
   return str;
 }
 
@@ -13,8 +11,7 @@ export function stringCompression1(str) {
   if (!str || str.length <= 2) return str;
 
   const charMap = new Map();
-  let compressedString = '',
-      previousLetter;
+  let compressedString = '', previousLetter;
 
   for (const letter of str) {
     if (letter !== previousLetter) {
@@ -35,6 +32,8 @@ export function stringCompression1(str) {
 
   return compressedString.length < str.length ? compressedString : str;
 }
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // SECOND SHORTER SOLUTION WITH DOPE REGEX
 export function stringCompression2(str) {

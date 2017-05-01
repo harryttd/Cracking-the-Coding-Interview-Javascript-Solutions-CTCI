@@ -1,9 +1,8 @@
 'use strict';
 
-export function URLify(str) {
-  if (!str) return str;
-  return str.split(' ').join('%20');
-}
+export const URLify1 = (str) => str ? str.split` `.join`%20` : str;
+
+export const URLify2 = (str) => str ? str.replace(/\s/g, '%20') : str;
 
 // SOLUTION FROM BOOK
 // function URLify(str, trueLength) {

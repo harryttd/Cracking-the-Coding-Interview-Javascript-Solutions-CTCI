@@ -1,7 +1,7 @@
 'use strict';
 
-// USING A SET
-// O(N) TIME -- O(N) SPACE
+// O(N) TIME --- O(N) SPACE
+
 export function removeDupes1(list) {
   if (!list || !list.next) return list;
 
@@ -9,6 +9,7 @@ export function removeDupes1(list) {
   let head = list;
 
   set.add(head.value);
+
   while (head.next) {
     if (set.has(head.next.value)) {
       head.next = head.next.next;
@@ -19,7 +20,10 @@ export function removeDupes1(list) {
   }
 }
 
-// O(N^2) TIME
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+// O(N^2) TIME --- O(1) SPACE
+
 export function removeDupes2(list) {
   if (!list || !list.next) return list;
   let head = list;
