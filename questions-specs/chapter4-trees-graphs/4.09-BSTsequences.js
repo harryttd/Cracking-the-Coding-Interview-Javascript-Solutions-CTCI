@@ -31,12 +31,12 @@ export function BSTsequences(tree) {
 
 function weaveArrayPerms(leftArray, rightArray, prefix = [], sequences = []) {
   if (leftArray.length && rightArray.length) {
-    // Shift leftArray head to prefix. Weave, and put back to leftArray
+    // Shift leftArray head to prefix. Weave, and put back to leftArray.
     prefix.push(leftArray.shift());
     weaveArrayPerms(leftArray, rightArray, prefix, sequences);
     leftArray.unshift(prefix.pop());
 
-    // Shift rightArray head to prefix. Weave, and put back to rightArray
+    // Shift rightArray head to prefix. Weave, and put back to rightArray.
     prefix.push(rightArray.shift());
     weaveArrayPerms(leftArray, rightArray, prefix, sequences);
     rightArray.unshift(prefix.pop());
