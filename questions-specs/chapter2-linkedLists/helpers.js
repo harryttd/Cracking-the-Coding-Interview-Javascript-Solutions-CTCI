@@ -48,7 +48,7 @@ export function createLinkedList() {
 }
 
 export function pushSingle(list, value) {
-  let node = createNode(value);
+  const node = createNode(value);
   if (list.head) {
     list.tail.next = node;
     list.tail = node;
