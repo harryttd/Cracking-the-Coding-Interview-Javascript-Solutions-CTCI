@@ -56,6 +56,32 @@ for (let key in funcs) {
       ]);
     });
 
+    it('Does not return duplicate permutations', function() {
+      [1, 2, 2, 1, 1, 1].forEach(v => this.tree.add(v));
+      const a = func(this.tree.root)
+      expect(a).to.eql([
+        [1, 1, 1, 1, 2, 2],
+        [1, 1, 1, 2, 1, 2],
+        [1, 1, 1, 2, 2, 1],
+        [1, 1, 2, 1, 1, 2],
+        [1, 1, 2, 1, 2, 1],
+        [1, 1, 2, 2, 1, 1],
+        [1, 2, 1, 1, 1, 2],
+        [1, 2, 1, 1, 2, 1],
+        [1, 2, 1, 2, 1, 1],
+        [1, 2, 2, 1, 1, 1]
+      ]);
+
+      this.tree = new helpers.Tree();
+      `abba`.split``.forEach(l => this.tree.add(l));
+      const b = func(this.tree.root);
+      expect(b).to.eql([
+        ['a', 'a', 'b', 'b'],
+        ['a', 'b', 'a', 'b'],
+        ['a', 'b', 'b', 'a']
+      ]);
+    });
+
   });
 
 }
