@@ -6,10 +6,11 @@ export class RandomTreeNode {
   constructor() {
     this.root = null;
     this.values = new Set();
-    this.min = this.max = 0;
   }
 
   insert(value) {
+    this.values.add(value);
+
     const newNode = new TreeNode(value);
 
     if (!this.root) {
@@ -19,27 +20,38 @@ export class RandomTreeNode {
       let node = this.root, branch;
 
       while (node) {
-        branch = value <= node.value ? 'left' : 'right';
+        branch = this._branch(node.value, value);
         if (!node[branch]) break;
         node = node[branch];
       }
       newNode.parent = node;
       node[branch] = newNode;
     }
-
-    this.values.add(value);
-    if (value < this.min) this.min = value;
-    else if (value > this.max) this.max = value;
   }
 
-  find(value) {
-    let node = this.root, branch;
+  randomNode() {
+    const values = [...this.values],
+          min = Math.ceil(Math.min.apply(null, values)),
+          max = Math.floor(Math.max.apply(null, values));
+
+    // MUCH SLOWER
+    // const min = Math.ceil(Math.min(...this.values)),
+    // max = Math.floor(Math.max(...this.values));
+
+    let randomNumber;
+    while (!this.values.has(randomNumber)) {
+      randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    return this.findNode(randomNumber);
+  }
+
+  findNode(value) {
+    let node = this.root;
 
     while (node) {
       if (node.value === value) return node;
-      branch = value <= node.value ? 'left' : 'right';
-      if (!node[branch]) break;
-      node = node[branch];
+      node = node[this._branch(node.value, value)];
     }
 
     return node;
@@ -47,53 +59,48 @@ export class RandomTreeNode {
 
   delete(value) {
     this.values.delete(value);
-    this.min = Math.min(...this.values);
-    this.max = Math.max(...this.values);
-    return this._deleteRecursive(this.root, 'root', value);
+    return this._deleteNode(this.root, 'root', value);
   }
 
-  _deleteRecursive(node, parentBranch, value) {
+  _deleteNode(node, parentBranch, value) {
     if (node) {
       if (node.value === value) {
         if (!node.left && !node.right) {
           if (node.parent) node.parent[parentBranch] = null;
-          else node = null;
+          else this.root = null;
         }
         else if (node.left && !node.right) {
           if (node.parent) node.parent[parentBranch] = node.left;
-          else node = node.left;
+          else {
+            this.root = this.root.left;
+            this.root.parent = null;
+          }
         }
         else if (!node.left && node.right) {
           if (node.parent) node.parent[parentBranch] = node.right;
           else {
-            node = node.right;
-            node.right.parent = null;
+            this.root = this.root.right;
+            this.root.parent = null;
           }
         }
         else {
           let minNode = node.right;
-          while (minNode.left) {
-            minNode = minNode.left;
-          }
+          while (minNode.left) minNode = minNode.left;
           node.value = minNode.value;
-          return this._deleteRecursive(node.right, 'right', minNode.value);
+
+          // minNode.parent.left = minNode.right;
+          this._deleteNode(node.right, 'right', minNode.value);
         }
       }
       else {
-        let branch = value < node.value ? 'left' : 'right';
+        const branch = this._branch(node.value, value);
+        this._deleteNode(node[branch], branch, value);
       }
     }
   }
 
-  randomNode() {
-    const min = Math.ceil(this.min), max = Math.floor(this.max);
-    let randomNumber;
-
-    while (!this.values.has(randomNumber)) {
-      randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    return this.find(randomNumber);
+  _branch(nodeValue, value) {
+    return value <= nodeValue ? 'left' : 'right';
   }
 
 }

@@ -2,6 +2,7 @@
 import { TreeNode } from './helpers';
 
 // O(N) TIME AND SPACE
+
 export function minimalHeightBST(arr) {
   if (!arr || !arr.length) return null;
   return createMinimalHeightBST(arr, 0, arr.length - 1);
