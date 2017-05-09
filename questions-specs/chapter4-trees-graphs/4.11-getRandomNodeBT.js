@@ -31,19 +31,9 @@ export class RandomTreeNode {
 
   randomNode() {
     const values = [...this.values],
-          min = Math.ceil(Math.min.apply(null, values)),
-          max = Math.floor(Math.max.apply(null, values));
+          randomIndex = Math.floor(Math.random() * values.length);
 
-    // MUCH SLOWER
-    // const min = Math.ceil(Math.min(...this.values)),
-    // max = Math.floor(Math.max(...this.values));
-
-    let randomNumber;
-    while (!this.values.has(randomNumber)) {
-      randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    }
-
-    return this.findNode(randomNumber);
+    return this.findNode(values[randomIndex]);
   }
 
   findNode(value) {
@@ -59,7 +49,7 @@ export class RandomTreeNode {
 
   delete(value) {
     this.values.delete(value);
-    return this._deleteNode(this.root, 'root', value);
+    this._deleteNode(this.root, 'root', value);
   }
 
   _deleteNode(node, parentBranch, value) {
@@ -104,3 +94,5 @@ export class RandomTreeNode {
   }
 
 }
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
