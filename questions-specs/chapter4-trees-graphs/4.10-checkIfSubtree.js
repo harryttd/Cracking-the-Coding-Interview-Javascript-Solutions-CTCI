@@ -7,7 +7,7 @@
   ABOUT O(N + KM) TIME --- O(log(N) + log(M)) SPACE
 */
 
-export function checkIfSubtree(tree1, tree2) {
+export function checkIfSubtree1(tree1, tree2) {
   if (!tree1 || !tree1.root) throw Error('invalid input for tree1');
   if (!tree2 || !tree2.root) return true;
   return findSubtreeRoot(tree1.root, tree2.root);
@@ -33,7 +33,7 @@ function matchTrees(tree1, tree2) {
 
 // O(N + M) TIME AND SPACE
 
-export function containsTree(tree1, tree2) {
+export function checkIfSubtree2(tree1, tree2) {
   if (!tree1 || !tree1.root) throw Error('invalid input for tree1');
   if (!tree2 || !tree2.root) return true;
 

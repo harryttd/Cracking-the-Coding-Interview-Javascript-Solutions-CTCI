@@ -8,41 +8,45 @@ export function BSTsequences(tree) {
   const leftSequence = BSTsequences(tree.left),
         rightSequence = BSTsequences(tree.right);
 
+  return weaveArrayPerms(tree.value, leftSequence, rightSequence);
+}
+
+function weaveArrayPerms(nodeValue, leftSequence, rightSequence) {
   const permsResult = [];
 
   if (leftSequence[0] && rightSequence[0]) {
     for (const leftSeq of leftSequence) {
       for (const rightSeq of rightSequence) {
-        const weaved = weaveArrayPerms(leftSeq, rightSeq);
+        const weaved = weave(leftSeq, rightSeq);
         for (const perm of weaved) {
-          permsResult.push([tree.value, ...perm]);
+          permsResult.push([nodeValue, ...perm]);
         }
       }
     }
   }
   else { // Any remaining sequence
     for (const perm of [...leftSequence, ...rightSequence]) {
-      permsResult.push([tree.value, ...perm]);
+      permsResult.push([nodeValue, ...perm]);
     }
   }
 
   return permsResult;
 }
 
-function weaveArrayPerms(leftArray, rightArray, prefix = [], sequences = []) {
-  if (leftArray.length && rightArray.length) {
-    // Shift leftArray head to prefix. Weave, and put back to leftArray.
-    prefix.push(leftArray.shift());
-    weaveArrayPerms(leftArray, rightArray, prefix, sequences);
-    leftArray.unshift(prefix.pop());
+function weave(leftSeq, rightSeq, prefix = [], sequences = []) {
+  if (leftSeq.length && rightSeq.length) {
+    // Shift leftSeq head to prefix. Weave, and put back to leftSeq.
+    prefix.push(leftSeq.shift());
+    weave(leftSeq, rightSeq, prefix, sequences);
+    leftSeq.unshift(prefix.pop());
 
-    // Shift rightArray head to prefix. Weave, and put back to rightArray.
-    prefix.push(rightArray.shift());
-    weaveArrayPerms(leftArray, rightArray, prefix, sequences);
-    rightArray.unshift(prefix.pop());
+    // Shift rightSeq head to prefix. Weave, and put back to rightSeq.
+    prefix.push(rightSeq.shift());
+    weave(leftSeq, rightSeq, prefix, sequences);
+    rightSeq.unshift(prefix.pop());
   }
   else {
-    sequences.push([...prefix, ...leftArray, ...rightArray]);
+    sequences.push([...prefix, ...leftSeq, ...rightSeq]);
   }
 
   return sequences;

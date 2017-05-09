@@ -27,7 +27,7 @@ for (let key in funcs) {
       expect(func(this.tree1, this.tree2)).to.be.true;
     });
 
-    it('returns right value for simple 3 node balanced tree', function() {
+    it('returns true for simple 3 node balanced tree', function() {
       [10, 9, 11].forEach(v => this.tree1.add(v));
       this.tree2.root = this.tree1.root.left;
       expect(func(this.tree1, this.tree2)).to.be.true;
@@ -36,6 +36,9 @@ for (let key in funcs) {
       this.tree2.root = null;
       [10, 9, 11].forEach(v => this.tree2.add(v));
       expect(func(this.tree1, this.tree2)).to.be.true;
+
+      this.tree2.add(99);
+      expect(func(this.tree1, this.tree2)).to.be.false;
     });
 
     it('returns false with two different trees', function() {
