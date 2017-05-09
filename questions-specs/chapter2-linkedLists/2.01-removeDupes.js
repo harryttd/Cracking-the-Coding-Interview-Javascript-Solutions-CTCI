@@ -6,27 +6,24 @@ export function removeDupes1(list) {
   if (!list || !list.next) return list;
 
   const set = new Set();
-  let head = list;
+  set.add(list.value);
 
-  set.add(head.value);
-
-  while (head.next) {
-    if (set.has(head.next.value)) {
-      head.next = head.next.next;
+  while (list.next) {
+    if (set.has(list.next.value)) {
+      list.next = list.next.next;
     } else {
-      set.add(head.next.value);
-      head = head.next;
+      set.add(list.next.value);
+      list = list.next;
     }
   }
-}
 
+}
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // O(N^2) TIME --- O(1) SPACE
 
-export function removeDupes2(list) {
-  if (!list || !list.next) return list;
-  let head = list;
+export function removeDupes2(head) {
+  if (!head || !head.next) return head;
 
   while (head) {
     let current = head;
@@ -39,4 +36,5 @@ export function removeDupes2(list) {
     }
     head = head.next;
   }
+
 }
