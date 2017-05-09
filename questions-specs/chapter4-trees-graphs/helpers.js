@@ -13,7 +13,7 @@ export class Tree {
   }
 
   add(value) {
-    let node = new TreeNode(value);
+    const node = new TreeNode(value);
     if (!this.root) {
       this.root = node;
     }

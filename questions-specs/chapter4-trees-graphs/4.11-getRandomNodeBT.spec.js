@@ -11,7 +11,7 @@ function runSampling(values, obj, samples) {
 for (let key in classes) {
   let Class = classes[key];
 
-  xdescribe('ch4-q11: ' + key, function() {
+  describe.only('ch4-q11: ' + key, function() {
 
     beforeEach(function() {
       this.obj = new Class();
@@ -75,6 +75,7 @@ for (let key in classes) {
             false, true, true, true, true, true, true, true]);
 
           this.obj.delete(12);
+          console.log(this.obj);
           pickedValues = (new Array(15)).fill(false);
           runSampling(pickedValues, this.obj, 1000);
           expect(pickedValues).to.eql([false, true, true, true, true, true, true,
