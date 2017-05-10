@@ -2,7 +2,7 @@
 
 import { TreeNode } from './helpers';
 
-export class RandomTreeNode {
+export class RandomTreeNode1 {
   constructor() {
     this.root = null;
     this.values = new Set();
@@ -59,19 +59,10 @@ export class RandomTreeNode {
           if (node.parent) node.parent[parentBranch] = null;
           else this.root = null;
         }
-        else if (node.left && !node.right) {
-          if (node.parent) node.parent[parentBranch] = node.left;
-          else {
-            this.root = this.root.left;
-            this.root.parent = null;
-          }
-        }
-        else if (!node.left && node.right) {
-          if (node.parent) node.parent[parentBranch] = node.right;
-          else {
-            this.root = this.root.right;
-            this.root.parent = null;
-          }
+        else if ((node.left && !node.right) || (!node.left && node.right)) {
+          const branch = node.left ? 'left' : 'right';
+          if (node.parent) node.parent[parentBranch] = node[branch];
+          else this.root = this.root[branch]; this.root.parent = null;
         }
         else {
           let minNode = node.right;

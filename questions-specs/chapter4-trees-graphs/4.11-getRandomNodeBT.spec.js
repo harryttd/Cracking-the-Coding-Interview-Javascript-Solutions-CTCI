@@ -11,7 +11,7 @@ function runSampling(values, obj, samples) {
 for (let key in classes) {
   let Class = classes[key];
 
-  describe.only('ch4-q11: ' + key, function() {
+  describe('ch4-q11: ' + key, function() {
 
     beforeEach(function() {
       this.obj = new Class();
