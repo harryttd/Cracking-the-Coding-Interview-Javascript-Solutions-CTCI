@@ -13,21 +13,21 @@ export class Tree {
   }
 
   add(value) {
-    const node = new TreeNode(value);
+    const newNode = new TreeNode(value);
     if (!this.root) {
-      this.root = node;
+      this.root = newNode;
     }
     else {
-      let n = this.root, branch;
-      while (n) {
-        branch = value <= n.value ? 'left' : 'right';
-        if (!n[branch]) {
+      let node = this.root, branch;
+      while (node) {
+        branch = value <= node.value ? 'left' : 'right';
+        if (!node[branch]) {
           break;
         }
-        n = n[branch];
+        node = node[branch];
       }
-      node.parent = n;
-      n[branch] = node;
+      newNode.parent = node;
+      node[branch] = newNode;
     }
   }
 }
@@ -90,67 +90,13 @@ function findDepth(cache, node, depth) {
 }
 
 export function isBalanced(tree) {
-  // if (Array.isArray(tree) || tree === undefined) return;
-
-  // if (!tree || !tree.root) {
-  //   return true;
-  // }
-
   if (!tree) return true;
-  // let node = tree.root,
-  let cache = {
+
+  const cache = {
       min: Number.MAX_SAFE_INTEGER,
       max: Number.MIN_SAFE_INTEGER
     };
-                // node
+
   findDepth(cache, tree, 0);
   return cache.max - cache.min <= 1;
-}
-
-class Graph {
-  constructor() {
-    this.maxVertices = 6;
-    this.vertices = new Array(this.maxVertices).fill(0);
-    this.count = 0;
-  }
-
-  addNode(node) {
-    if (this.count < this.maxVertices) {
-      this.vertices[this.count] = node;
-      this.count++;
-    } else {
-      throw Error('graph is full');
-    }
-  }
-
-  getNode() {
-    return this.vertices;
-  }
-
-}
-
-class GraphNode {
-  constructor(vertex, adjacentLength) {
-    this.adjacent = new Array(adjacentLength || 6);
-    this.vertex = vertex;
-    this.adjacentCount = 0;
-    this.visited = false;
-  }
-
-  addAdjacent(node) {
-    if (this.adjacentCount < this.adjacent.length) {
-      this.adjacent[this.adjacentCount] = node;
-      this.adjacentCount++;
-    } else {
-      throw Error('adjacent nodes are full');
-    }
-  }
-
-  getAdjacent() {
-    return this.adjacent;
-  }
-
-  getVertex() {
-    return this.vertex;
-  }
 }

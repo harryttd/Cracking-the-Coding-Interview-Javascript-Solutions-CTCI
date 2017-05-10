@@ -107,7 +107,6 @@ export function firstCommonAncestor4(node1, node2, tree) {
 
 function findCommonAncestor(node1, node2, tree) {
   if (!tree) return new AncestorWrapper(null, false);
-
   if (tree === node1 && tree === node2) return new AncestorWrapper(tree, true);
 
   const checkLeft = findCommonAncestor(node1, node2, tree.left);

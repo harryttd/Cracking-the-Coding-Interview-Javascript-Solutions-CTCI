@@ -6,6 +6,7 @@ const peek = (stack) => stack[stack.length - 1];
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // MY SOLUTION
+
 const sort = (stack, value) => {
   let index = 0;
   while (value < stack[index]) index++;
@@ -24,6 +25,7 @@ export const sortStack1 = (stack) => {
 
 // BOOK SOLUTION
 // MOVES NUMBERS BACK AND FORTH BETWEEN STACK AND TEMP TO SORT
+
 export const sortStack2 = (stack) => {
   if (!Array.isArray(stack)) throw Error('Invalid input');
 

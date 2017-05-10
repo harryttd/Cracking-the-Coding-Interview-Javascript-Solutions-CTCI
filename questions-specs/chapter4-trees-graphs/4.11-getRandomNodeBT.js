@@ -96,7 +96,7 @@ export class RandomTreeNode1 {
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-class Node extends TreeNode {
+class TreeNodeSize extends TreeNode {
   constructor(value) {
     super(value);
     this.size = 1;
@@ -109,7 +109,7 @@ export class RandomTreeNode2 {
   }
 
   insert(value) {
-    const newNode = new Node(value);
+    const newNode = new TreeNodeSize(value);
 
     if (!this.root) {
       this.root = newNode;
@@ -195,7 +195,7 @@ export class RandomTreeNode3 {
   }
 
   insert(value) {
-    const newNode = new Node(value);
+    const newNode = new TreeNodeSize(value);
 
     if (!this.root) {
       this.root = newNode;

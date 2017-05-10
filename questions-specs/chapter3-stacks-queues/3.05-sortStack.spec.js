@@ -1,6 +1,8 @@
 import { expect } from 'chai';
 import * as funcs from './3.05-sortStack';
 
+const numberSort = (a, b) => a < b ? 1 : a > b ? -1 : 0;
+
 for (let key in funcs) {
   let func = funcs[key];
 
@@ -24,7 +26,7 @@ for (let key in funcs) {
     ].forEach(arg => {
 
       it(`correctly sorts ${arg}`, function() {
-        let expected = arg.slice(0).sort((a, b) => a < b ? 1 : a > b ? -1 : 0);
+        let expected = arg.slice(0).sort(numberSort);
 
         expect(func(arg)).to.eql(expected);
       });
@@ -36,7 +38,7 @@ for (let key in funcs) {
       for (let i = 0; i < 100; ++i) {
         stack.push(Math.trunc(Math.random() * 9999999));
       }
-      let expected = stack.slice(0).sort((a, b) => a < b ? 1 : a > b ? -1 : 0);
+      let expected = stack.slice(0).sort(numberSort);
       expect(func(stack)).to.eql(expected);
     });
 
