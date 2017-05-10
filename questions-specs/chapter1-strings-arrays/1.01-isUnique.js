@@ -1,12 +1,12 @@
 'use strict';
 
 // USING REGEX
-export const isUnique1 = str => !/(.).*\1/.test(str);
+export const isUniqueRegex = str => !/(.).*\1/.test(str);
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-// O(N^2) TIME -- O(1) SPACE
-export function isUnique2(str) {
+// O(N^2) TIME --- O(1) SPACE
+export function isUnique1(str) {
   const strLength = str.length;
 
   for (let i = 0; i < strLength; i++) {
@@ -20,13 +20,32 @@ export function isUnique2(str) {
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-// O(N) TIME -- O(N) SPACE
-export function isUnique3(str) {
+// USING A SET
+
+export const isUniqueSet = str => new Set(str).size === str.length;
+
+// O(N) TIME --- O(N) SPACE
+export function isUnique2(str) {
   const letterSet = new Set();
 
   for (const letter of str) {
     if (letterSet.has(letter)) return false;
     letterSet.add(letter);
+  }
+
+  return true;
+}
+
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+// O(N log N) TIME --- O(1) SPACE
+export function isUnique3(str) {
+  str = str.split``.sort();
+  const length = str.length;
+
+  for (let i = 0; i < length; i++) {
+    if (str[i] === str[i + 1]) return false;
   }
 
   return true;
