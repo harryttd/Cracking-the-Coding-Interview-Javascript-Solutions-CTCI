@@ -46,10 +46,10 @@ function validateBST_2(node, minValue, maxValue) {
 
 // ASSUMES NO DUPLICATE VALUES. THIS ALGORITHM WOULD STILL RETURN TRUE EVEN IF TO THE RIGHT THERE WAS AN EQUAL VALUE NODE.
 /*
-EXAMPLE:
-          10
-        /   \
-      10    10
+  EXAMPLE:
+            10
+          /   \
+        10    10
 */
 
 export function noDupesIsValidBST(tree) {
