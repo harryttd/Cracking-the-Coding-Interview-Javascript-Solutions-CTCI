@@ -56,10 +56,10 @@ export class RandomTreeNode1 {
 
   delete(value) {
     this.values.delete(value);
-    this._deleteNode(this.root, 'root', value);
+    this._deleteNode(this.root, value);
   }
 
-  _deleteNode(node, parentBranch, value) {
+  _deleteNode(node, value, parentBranch = '') {
     if (node) {
       if (node.value === value) {
         if (!node.left && !node.right) {
@@ -75,14 +75,15 @@ export class RandomTreeNode1 {
           let minNode = node.right;
           while (minNode.left) minNode = minNode.left;
           node.value = minNode.value;
+          node.size--;
 
-          // minNode.parent.left = minNode.right;
-          this._deleteNode(node.right, 'right', minNode.value);
+          this._deleteNode(node.right, minNode.value, 'right');
         }
       }
       else {
         const branch = this._branch(node.value, value);
-        this._deleteNode(node[branch], branch, value);
+        node.size--;
+        this._deleteNode(node[branch], value, branch);
       }
     }
   }
@@ -140,7 +141,7 @@ export class RandomTreeNode2 {
 
   randomNode(node = this.root) {
     const leftSize = node.left ? node.left.size : 0,
-    randomIndex = Math.floor(Math.random() * node.size);
+          randomIndex = Math.floor(Math.random() * node.size);
 
     if (randomIndex < leftSize) return this.randomNode(node.left);
     else if (randomIndex === leftSize) return node;
@@ -148,10 +149,10 @@ export class RandomTreeNode2 {
   }
 
   delete(value) {
-    this._deleteNode(this.root, 'root', value);
+    this._deleteNode(this.root, value);
   }
 
-  _deleteNode(node, parentBranch, value) {
+  _deleteNode(node, value, parentBranch = '') {
     if (node) {
       if (node.value === value) {
         if (!node.left && !node.right) {
@@ -169,13 +170,13 @@ export class RandomTreeNode2 {
           node.value = minNode.value;
           node.size--;
 
-          this._deleteNode(node.right, 'right', minNode.value);
+          this._deleteNode(node.right, minNode.value, 'right');
         }
       }
       else {
         const branch = this._branch(node.value, value);
         node.size--;
-        this._deleteNode(node[branch], branch, value);
+        this._deleteNode(node[branch], value, branch);
       }
     }
   }
@@ -187,3 +188,91 @@ export class RandomTreeNode2 {
 }
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+export class RandomTreeNode3 {
+  constructor() {
+    this.root = null;
+  }
+
+  insert(value) {
+    const newNode = new Node(value);
+
+    if (!this.root) {
+      this.root = newNode;
+    }
+    else {
+      let node = this.root, branch;
+
+      while (node) {
+        branch = this._branch(node.value, value);
+        node.size++;
+        if (!node[branch]) break;
+        node = node[branch];
+      }
+      newNode.parent = node;
+      node[branch] = newNode;
+    }
+  }
+
+  findNode(value) {
+    let node = this.root;
+
+    while (node) {
+      if (node.value === value) return node;
+      node = node[this._branch(node.value, value)];
+    }
+
+    return node;
+  }
+
+  randomNode() {
+    const randomIndex = Math.floor(Math.random() * this.root.size);
+    return this.getKthNode(randomIndex);
+  }
+
+  getKthNode(index, node = this.root) {
+    const leftSize = node.left ? node.left.size : 0;
+
+    if (index < leftSize) return this.getKthNode(index, node.left);
+    else if (index === leftSize) return node;
+    else return this.getKthNode(index - (leftSize + 1), node.right);
+  }
+
+  delete(value) {
+    this._deleteNode(this.root, value);
+  }
+
+  _deleteNode(node, value, parentBranch = '') {
+    if (node) {
+      if (node.value === value) {
+        if (!node.left && !node.right) {
+          if (node.parent) node.parent[parentBranch] = null;
+          else this.root = null;
+        }
+        else if ((node.left && !node.right) || (!node.left && node.right)) {
+          const branch = node.left ? 'left' : 'right';
+          if (node.parent) node.parent[parentBranch] = node[branch];
+          else this.root = this.root[branch]; this.root.parent = null;
+        }
+        else {
+          let minNode = node.right;
+          while (minNode.left) minNode = minNode.left;
+          node.value = minNode.value;
+          node.size--;
+
+          this._deleteNode(node.right, minNode.value, 'right');
+        }
+      }
+      else {
+        const branch = this._branch(node.value, value);
+        node.size--;
+        this._deleteNode(node[branch], value, branch);
+      }
+    }
+  }
+
+  _branch(nodeValue, value) {
+    return value <= nodeValue ? 'left' : 'right';
+  }
+
+}

@@ -22,6 +22,7 @@ for (let key in classes) {
       expect(this.obj.randomNode().value).to.equal(1);
       expect(this.obj.randomNode().value).to.equal(1);
       expect(this.obj.randomNode().value).to.equal(1);
+      this.obj.delete(1);
     });
 
     [
