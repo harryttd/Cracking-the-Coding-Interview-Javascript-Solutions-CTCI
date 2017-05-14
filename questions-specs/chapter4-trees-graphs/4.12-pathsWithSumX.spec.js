@@ -5,15 +5,15 @@ import * as funcs from './4.12-pathsWithSumX';
 for (let key in funcs) {
   let func = funcs[key];
 
-  xdescribe('ch4-q12: ' + key, function() {
+  describe('ch4-q12: ' + key, function() {
 
     beforeEach(function() {
       this.tree = new Tree();
     });
 
     it('throws an error if tree is null or empty', function() {
-      expect(() => func(null, 10)).to.throw('tree must be valid and non-empty');
-      expect(() => func(this.tree)).to.throw('tree must be valid and non-empty');
+      expect(() => func(null, 10)).to.throw('invalid tree');
+      expect(() => func(this.tree)).to.throw('invalid tree');
     });
 
     it('returns 0 when no paths sum to value', function() {
