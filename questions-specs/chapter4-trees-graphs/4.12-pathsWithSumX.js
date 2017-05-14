@@ -10,12 +10,11 @@ function countPaths(tree, value, path = [], paths = 0) {
     path.push(tree.value);
 
     let sum = 0,
-        pathLength = path.length - 1;
+        pathIndex = path.length - 1;
 
-    while (pathLength >= 0) {
-      sum += path[pathLength];
+    while (!!~pathIndex) {
+      sum += path[pathIndex--];
       if (sum === value) paths++;
-      pathLength--;
     }
 
     paths += countPaths(tree.left, value, path) + countPaths(tree.right, value, path);
