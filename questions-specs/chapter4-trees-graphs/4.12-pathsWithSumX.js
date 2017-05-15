@@ -1,30 +1,40 @@
 'use strict';
 
+// BALANCED TREE: O(N log N) TIME
+// WORST CASE: O(N^2) TIME
+
 export function treePathsWithSumX_1(tree, value) {
   if (!tree || !tree.root) throw Error('invalid tree');
   return countPaths1(tree.root, value);
 }
 
-function countPaths1(tree, value, path = [], paths = 0) {
+function countPaths1(tree, targetValue, path = []) {
+  let paths = 0;
+
   if (tree) {
     path.push(tree.value);
 
     let sum = 0,
-        pathLength = path.length;
+        pathIndex = path.length - 1;
 
-    while (!!~pathLength--) {
-      sum += path[pathLength];
-      if (sum === value) paths++;
+    while (!!~pathIndex) {
+      sum += path[pathIndex];
+      if (sum === targetValue) paths++;
+      pathIndex--;
     }
 
-    paths += countPaths1(tree.left, value, path) + countPaths1(tree.right, value, path);
+    paths += countPaths1(tree.left, targetValue, path) + countPaths1(tree.right, targetValue, path);
     path.pop();
   }
 
   return paths;
 }
 
+
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+// BALANCED TREE: O(N log N) TIME
+// WORST CASE: O(N^2) TIME
 
 export function treePathsWithSumX_2(tree, value) {
   if (!tree || !tree.root) throw Error('invalid tree');
@@ -41,15 +51,15 @@ function countPaths2(tree, value) {
   return pathsFromRoot + leftPaths + rightPaths;
 }
 
-function countFromNode(tree, value, sum = 0) {
+function countFromNode(tree, targetValue, sum = 0) {
   if (!tree) return 0;
 
   sum += tree.value;
 
   let paths = 0;
-  if (sum === value) paths++;
+  if (sum === targetValue) paths++;
 
-  paths += countFromNode(tree.left, value, sum) + countFromNode(tree.right, value, sum);
+  paths += countFromNode(tree.left, targetValue, sum) + countFromNode(tree.right, targetValue, sum);
 
   return paths;
 }
