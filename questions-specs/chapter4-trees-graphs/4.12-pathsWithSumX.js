@@ -66,6 +66,11 @@ function countFromNode(tree, targetValue, sum = 0) {
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
+// SECOND BOOK SOLUTION
+
+// O(NUMBER OF NODES IN THE TREE) TIME
+// O(log N) SPACE FOR BALANCED TREE. WORST CASE O(N).
+
 export function treePathsWithSumX_3(tree, value) {
   if (!tree || !tree.root) throw Error('invalid tree');
   return countPaths3(tree.root, value);
@@ -80,7 +85,7 @@ function countPaths3(node, targetSum, runningSum = 0, pathCount = new Map()) {
   const sum = runningSum - targetSum;
   let totalPaths = pathCount.get(sum) || 0;
 
-  // If runningSum equals targetSum, then one additional path starts at root. Add in this path.
+  // If runningSum equals targetSum, then one additional path starts at root.
   if (runningSum === targetSum) totalPaths++;
 
   // Add runningSum to pathCounts.
@@ -95,8 +100,8 @@ function countPaths3(node, targetSum, runningSum = 0, pathCount = new Map()) {
   return totalPaths;
 }
 
-function incrementMap(hashTable, key, delta) {
-  const newCount = delta + (hashTable.get(key) || 0);
-  if (!newCount) hashTable.delete(key); // Remove when 0 to reduce space usage
-  else hashTable.set(key, newCount);
+function incrementMap(map, key, delta) {
+  const newCount = delta + (map.get(key) || 0);
+  if (!newCount) map.delete(key); // Remove when 0 to reduce space usage
+  else map.set(key, newCount);
 }
