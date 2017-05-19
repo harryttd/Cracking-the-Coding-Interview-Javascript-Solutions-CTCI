@@ -7,7 +7,7 @@ export function palindromeWhileLoop(str) {
 
   str = str.toLowerCase();
 
-  let head = 0, tail = str.length - 1;
+  let head = -1, tail = str.length;
 
   while (head++ < tail--) {
     if (str[head] !== str[tail]) return false;

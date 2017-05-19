@@ -4,7 +4,7 @@ function stringPermutations(str, prefix = '', perms = [], prefixes = new Set()) 
   const length = str.length;
 
   if (prefixes.has(prefix)) return;
-  else prefixes.add(prefix);
+  else prefixes.add(prefix); console.log(prefixes);
 
   if (!length) return perms.push(prefix);
 

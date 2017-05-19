@@ -70,7 +70,7 @@ function intersection(start1, end1, start2, end2) {
   }
 
   /* Get intersection coordinate. */
-  const x =  (line2.yintercept - line1.yintercept) / (line1.slope - line2.slope);
+  const x = (line2.yintercept - line1.yintercept) / (line1.slope - line2.slope);
   const y = x * line1.slope + line1.yintercept;
   const intersect = new Point(x, y);
 
