@@ -4,7 +4,7 @@
 
 export function mergeSort(array) {
   if (array.length < 2) return array;
-  const splits = split(array), left = splits[0], right = splits[1];
+  const splits = split(array), [left, right] = splits;
   return merge(mergeSort(left), mergeSort(right));
 }
 
@@ -23,5 +23,6 @@ export function merge(left, right) {
   }
 
   merged.push(...left.slice(leftIndex), ...right.slice(rightIndex));
+
   return merged;
 }
