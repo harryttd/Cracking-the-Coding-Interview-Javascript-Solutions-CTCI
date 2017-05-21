@@ -11,5 +11,5 @@ function parensCombos(open, close = open, str = '', result = []) {
   return result;
 }
 
-console.log(parensCombos(3)); // ((())), (()()), (())(), ()(()), ()()()
+console.log(parensCombos(3)); // [ '((()))', '(()())', '(())()', '()(())', '()()()' ]
 console.log(parensCombos(4));
