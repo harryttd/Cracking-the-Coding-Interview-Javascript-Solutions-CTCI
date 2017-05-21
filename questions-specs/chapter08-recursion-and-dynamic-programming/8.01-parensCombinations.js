@@ -1,7 +1,7 @@
 'use strict';
 
 function parensCombos(open, close = open, str = '', result = []) {
-  if (!open && !close) return result.push(str);// All opening and closing parens have been added
+  if (!open && !close) return result.push(str); // All opening and closing parens have been added
 
   if (open > close) return; // Invalid: There are more closing parens than open ones
 
@@ -11,5 +11,5 @@ function parensCombos(open, close = open, str = '', result = []) {
   return result;
 }
 
-console.log(parensCombos(3));
+console.log(parensCombos(3)); // ((())), (()()), (())(), ()(()), ()()()
 console.log(parensCombos(4));
