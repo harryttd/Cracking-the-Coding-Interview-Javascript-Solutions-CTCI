@@ -48,8 +48,8 @@ console.log("TOP DOWN:", fibonacciTD(70));
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // TAIL RECURSION
-function fib(n, sum = 0, prev = 1) {
-  if (n <= 1) return sum + prev;
-  return fib(n - 1, prev + sum, sum);
+function fib(num, sum = 0, prev = 1) {
+  if (num <= 1) return prev + sum;
+  return fib(num - 1, prev + sum, sum);
 }
 console.log("TAIL RECURSION:", fib(99999999));
