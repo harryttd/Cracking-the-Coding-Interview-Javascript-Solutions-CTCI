@@ -1,6 +1,7 @@
 'use strict';
 
 // Approx. O(2^N) TIME --- Closer to O(1.6^N)
+// O(N) SPACE
 
 // Not Optimized
 function fibonacci(num) {
@@ -11,7 +12,7 @@ console.log("NOT OPTIMIZED:", fibonacci(30));
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-// O(N) TIME
+// O(N) TIME --- O(1) SPACE
 
 // Bottom Up
 function fibonacciBU(num) {
@@ -30,7 +31,7 @@ console.log("BOTTOM UP:", fibonacciBU(70));
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-// O(N) TIME
+// O(N) TIME --- O(N) SPACE
 
 // Top Down
 function fibonacciTD(num, memo = []) {

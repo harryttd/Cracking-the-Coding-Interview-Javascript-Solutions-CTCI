@@ -1,6 +1,7 @@
 'use strict';
 
 // Approx. O(3^N) TIME --- Closer to O(1.84^N)
+// O(N) SPACE
 
 // Not Optimized
 function tripleStep(steps) {
@@ -14,7 +15,7 @@ console.log("NOT OPTIMIZED:", tripleStep(10));
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-// O(N) TIME
+// O(N) TIME --- O(1) SPACE
 
 // Bottom Up
 function tripleStepBU(steps) {
@@ -40,7 +41,7 @@ console.log("BOTTOM UP:", tripleStepBU(50));
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-// O(N) TIME
+// O(N) TIME --- O(N) SPACE
 
 // Top Down
 function tripleStepTD(steps, memo = []) {
