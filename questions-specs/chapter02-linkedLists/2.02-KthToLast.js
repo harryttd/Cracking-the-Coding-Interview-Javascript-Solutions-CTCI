@@ -54,4 +54,4 @@ function printKthToLast(list, k) {
   return index;
 }
 
-// printKthToLast({value: 8, next: {value: 5, next: {value: 1}}}, 2);
+// printKthToLast({value: 8, next: {value: 5, next: {value: 1, next: null}}}, 2);
