@@ -42,10 +42,10 @@ export function graphSearchBFS(graph, start, target) {
 
 export function graphSearchDFS(graph, start, target) {
   errorCheck(graph, start);
-  return searchDFS(graph, start, target, new Set());
+  return searchDFS(graph, start, target);
 }
 
-function searchDFS(graph, start, target, visited) {
+function searchDFS(graph, start, target, visited = new Set()) {
   if (start === target) return true;
 
   visited.add(start);
