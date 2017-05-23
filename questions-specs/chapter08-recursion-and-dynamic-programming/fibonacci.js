@@ -1,5 +1,18 @@
 'use strict';
 
+// Approx. O(2^N) TIME --- Closer to O(1.6^N)
+
+// Not Optimized
+function fibonacci(num) {
+  if (num <= 1) return num;
+  return fibonacci(num - 1) + fibonacci(num - 2);
+}
+console.log("NOT OPTIMIZED:", fibonacci(30));
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+// O(N) TIME
+
 // Bottom Up
 function fibonacciBU(num) {
   if (!num) return 0;
@@ -13,9 +26,11 @@ function fibonacciBU(num) {
 
   return a + b;
 }
-console.log(fibonacciBU(50));
+console.log("BOTTOM UP:", fibonacciBU(70));
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+// O(N) TIME
 
 // Top Down
 function fibonacciTD(num, memo = []) {
@@ -27,4 +42,4 @@ function fibonacciTD(num, memo = []) {
 
   return memo[num];
 }
-console.log(fibonacciTD(100));
+console.log("TOP DOWN:", fibonacciTD(70));
