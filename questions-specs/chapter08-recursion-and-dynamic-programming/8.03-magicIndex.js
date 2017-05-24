@@ -1,5 +1,6 @@
 'use strict';
 
+// O(N) TIME
 function magicIndex(arr) {
   for (const [index, num] of arr.entries()) {
     if (index === num) return index;
@@ -35,8 +36,8 @@ console.log(magicIndex_BinarySearch([-40, -20, -1, 1, 2, 3, 5, 7, 9, 12, 13]));
 // Only works with distinct values
 function magicIndex_BSrecursive(arr, start = 0, end = arr.length - 1) {
   if (end < start) return -1;
-
   const midIndex = Math.floor((start + end) / 2);
+
   if (midIndex === arr[midIndex]) return midIndex;
   else if (midIndex < arr[midIndex]) return magicIndex_BSrecursive(arr, start, midIndex - 1);
   else return magicIndex_BSrecursive(arr, midIndex + 1, end);
