@@ -1,6 +1,5 @@
 'use strict';
 
-// RETURNS WHERE LOOP STARTS
 // O(N) TIME -- O(1) SPACE
 export function getLoopStartNode(list) {
   if (!list || !list.next) return null;

@@ -1,4 +1,5 @@
 'use strict';
+
 import { createNode, getListLength } from './helpers';
 
 // RECURSIVE SOLUTION
@@ -9,7 +10,7 @@ export function isPalindromeRecursive(list) {
 
 function recursiveIsPalindrome(list, length) {
   // If length is even
-  if (!list || length <= 0) return {node: list, result: true};
+  if (!list || length === 0) return {node: list, result: true};
   // If length is odd
   else if (length === 1) return {node: list.next, result: true};
 

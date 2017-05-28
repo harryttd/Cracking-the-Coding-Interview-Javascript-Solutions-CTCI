@@ -1,9 +1,7 @@
 'use strict';
 
 export function buildOrder(projects, dependencies) {
-  const adjList = {},
-        result = new Set(),
-        path = new Set();
+  const adjList = {}, result = new Set();
 
   // create adjacency list
   projects.forEach(project => adjList[project] = []);
@@ -11,19 +9,19 @@ export function buildOrder(projects, dependencies) {
   dependencies.forEach(edge => adjList[edge[0]].push(edge[1]));
 
   // run topological sort
-  projects.forEach(project => topologicalSort(project, adjList, path, result));
+  projects.forEach(project => topologicalSort(project, adjList, result));
 
   return [...result].reverse();
 }
 
-function topologicalSort(project, adjList, path, result) {
+function topologicalSort(project, adjList, result, path = new Set()) {
   if (!result.has(project)) {
 
     path.add(project);
 
     for (const dependent of adjList[project]) {
-      if (path.has(dependent)) throw new Error('dependencies are cyclic');
-      topologicalSort(dependent, adjList, path, result);
+      if (path.has(dependent)) throw Error('dependencies are cyclic');
+      topologicalSort(dependent, adjList, result, path);
     }
 
     path.delete(project);

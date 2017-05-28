@@ -1,12 +1,11 @@
 'use strict';
 
 function stringPermutations(str, prefix = '', perms = [], prefixes = new Set()) {
-  const length = str.length;
-
   if (prefixes.has(prefix)) return;
-  else prefixes.add(prefix); console.log(prefixes);
+  else prefixes.add(prefix);
 
-  if (!length) return perms.push(prefix);
+  const length = str.length;
+  if (!length) perms.push(prefix);
 
   for (let i = 0; i < length; i++) {
     stringPermutations(str.slice(0, i) + str.slice(i + 1), prefix + str[i], perms, prefixes);
