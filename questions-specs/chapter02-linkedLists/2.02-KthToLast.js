@@ -48,7 +48,7 @@ export function KthToLast2(list, k) {
 // O(N) SPACE
 
 function printKthToLast(list, k) {
-  if (!list) return 0;
+  if (!list) return 0; // Can Return -1 if input for k is 0
   let index = printKthToLast(list.next, k) + 1;
   if (index === k) console.log(k + 'th to last node is' + list.value);
   return index;
