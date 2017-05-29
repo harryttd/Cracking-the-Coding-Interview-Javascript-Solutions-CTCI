@@ -1,7 +1,7 @@
 'use strict';
 
 // BALANCED TREE: O(N log N) TIME
-// WORST CASE: O(N^2) TIME
+// WORST CASE: O(Nˆ2) TIME
 
 export function treePathsWithSumX_1(tree, value) {
   if (!tree || !tree.root) throw Error('invalid tree');
@@ -34,7 +34,7 @@ function countPaths1(tree, targetValue, path = []) {
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // BALANCED TREE: O(N log N) TIME
-// WORST CASE: O(N^2) TIME
+// WORST CASE: O(Nˆ2) TIME
 
 export function treePathsWithSumX_2(tree, value) {
   if (!tree || !tree.root) throw Error('invalid tree');

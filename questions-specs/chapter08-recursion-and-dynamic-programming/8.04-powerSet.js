@@ -1,8 +1,8 @@
 'use strict';
 
-// O(N2^n) TIME AND SPACE
-// 2^n SUBSETS --- EACH ELEMENT WILL BE IN 2^n-1 (half) SUBSETS
-// TOTAL NUMBER OF ELEMENTS IN SUBSETS IS N*2^n-1
+// O(N2ˆn) TIME AND SPACE
+// 2ˆn SUBSETS --- EACH ELEMENT WILL BE IN 2ˆn-1 (half) SUBSETS
+// TOTAL NUMBER OF ELEMENTS IN SUBSETS IS N*2ˆn-1
 
 function powerSetRecursive(set, index = set.length - 1) {
   let allSubsets;

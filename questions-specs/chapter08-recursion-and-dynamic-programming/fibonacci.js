@@ -1,6 +1,6 @@
 'use strict';
 
-// Approx. O(2^N) TIME --- Closer to O(1.6^N)
+// Approx. O(2ˆn) TIME --- Closer to O(1.6ˆn)
 // O(N) SPACE
 
 // Not Optimized

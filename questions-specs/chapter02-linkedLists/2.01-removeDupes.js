@@ -20,7 +20,7 @@ export function removeDupes1(list) {
 }
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-// O(N^2) TIME --- O(1) SPACE
+// O(Nˆ2) TIME --- O(1) SPACE
 
 export function removeDupes2(head) {
   if (!head || !head.next) return head;

@@ -5,7 +5,7 @@ export const isUniqueRegex = str => !/(.).*\1/.test(str);
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-// O(N^2) TIME --- O(1) SPACE
+// O(Nˆ2) TIME --- O(1) SPACE
 export function isUnique1(str) {
   const strLength = str.length;
 
