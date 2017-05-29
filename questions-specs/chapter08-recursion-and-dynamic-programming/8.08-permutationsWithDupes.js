@@ -26,7 +26,7 @@ console.log(permutationsWithDupes1('aabbbbc'));
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-// Very optimized for duplicate strings.
+// Very optimized runtime for duplicate strings.
 
 function permutationsWithDupes2(str) {
   return createPerms('', str.length, buildLetterMap(str));
