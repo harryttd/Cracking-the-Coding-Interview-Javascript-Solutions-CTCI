@@ -36,3 +36,25 @@ function permutationsNoDupes2(str, result = []) {
 console.log(permutationsNoDupes2('abc'));
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+function permutationsNoDupes3(str) {
+  const result = [], { length } = str;
+
+  if (!length) {
+    result.push(str);
+    return result;
+  }
+
+  for (let i = 0; i < length; i++) {
+    // Remove char at i and find perms of remaining
+    const remaining = str.slice(0, i) + str.slice(i + 1);
+    const partials = permutationsNoDupes3(remaining);
+
+    for (const word of partials) {
+      result.push(str[i] + word);
+    }
+  }
+
+  return result;
+}
+console.log(permutationsNoDupes3('abc'));
