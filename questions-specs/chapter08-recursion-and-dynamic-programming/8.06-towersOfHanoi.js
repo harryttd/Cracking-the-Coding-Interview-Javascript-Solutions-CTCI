@@ -21,4 +21,4 @@ function solveHanoi(numDisks, startStack, buffer, endStack) {
     solveHanoi(numDisks - 1, buffer, startStack, endStack);
   }
 }
-console.log(towersOfHanoi(10));
+console.log(towersOfHanoi(5));
