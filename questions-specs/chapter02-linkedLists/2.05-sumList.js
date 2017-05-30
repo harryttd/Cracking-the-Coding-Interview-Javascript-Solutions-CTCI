@@ -102,4 +102,4 @@ const list1 = {value: 6, next: {value: 1, next: {value: 7, next: {value: 8, next
 const list2 = {value: 2, next: {value: 9, next: {value: 5, next: null}}};
 // const list1 = {value: 7, next: {value: 1, next: {value: 6, next: null}}};
 // const list2 = {value: 5, next: {value: 9, next: {value: 2, next: null}}};
-console.log(addLists(list1, list2));
+// console.log(addLists(list1, list2));

@@ -44,6 +44,24 @@ export function intersection2(list1, list2) {
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
+// O(AB) TIME --- O(1) SPACE
+export function intersection3(list1, list2) {
+  if (!list1 || !list2) return;
+
+  let head1 = list1, head2 = list2;
+
+  while (head1) {
+    while (head2) {
+      if (head1 === head2) return head1;
+      head2 = head2.next;
+    }
+    head2 = list2;
+    head1 = head1.next;
+  }
+}
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
 // BOOKS SOLUTION
 // (O(A + B)) O(N) TIME -- O(1) SPACE
 function getTailAndSize(list) {
@@ -62,7 +80,7 @@ function getKthNode(list, k) {
   return list;
 }
 
-export function BookSolutionIntersection3(list1, list2) {
+export function BookSolutionIntersection(list1, list2) {
   if (!list1 || !list2) return;
 
   const head1 = getTailAndSize(list1),
@@ -85,12 +103,12 @@ export function BookSolutionIntersection3(list1, list2) {
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // IF BOTH LISTS ARE THE SAME LENGTH
-// function intersection(list1, list2) {
-//   let head1 = list1, head2 = list2;
-//
-//   while (head1) {
-//     if (head1 === head2) return head1;
-//     head1 = head1.next;
-//     head2 = head2.next;
-//   }
-// }
+function intersection(list1, list2) {
+  let head1 = list1, head2 = list2;
+
+  while (head1) {
+    if (head1 === head2) return head1;
+    head1 = head1.next;
+    head2 = head2.next;
+  }
+}
