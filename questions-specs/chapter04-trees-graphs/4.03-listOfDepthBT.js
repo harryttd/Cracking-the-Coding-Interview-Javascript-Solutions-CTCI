@@ -4,12 +4,10 @@ import { LinkedList } from './helpers';
 // RECURSIVE DEPTH-FIRST SEARCH SOLUTION
 // O(N) TIME AND SPACE
 export function DFS_linkedListsOfBTDepth(tree) {
-  const lists = [];
-  DFS_createListOfBTDepth(tree.root, lists);
-  return lists;
+  return DFS_createListOfBTDepth(tree.root);
 }
 
-function DFS_createListOfBTDepth(tree, lists, depthLevel = 0) {
+function DFS_createListOfBTDepth(tree, lists = [], depthLevel = 0) {
   if (tree) {
     if (!lists[depthLevel]) lists[depthLevel] = new LinkedList();
 
@@ -18,6 +16,8 @@ function DFS_createListOfBTDepth(tree, lists, depthLevel = 0) {
     DFS_createListOfBTDepth(tree.left, lists, depthLevel + 1);
     DFS_createListOfBTDepth(tree.right, lists, depthLevel + 1);
   }
+
+  return lists;
 }
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
