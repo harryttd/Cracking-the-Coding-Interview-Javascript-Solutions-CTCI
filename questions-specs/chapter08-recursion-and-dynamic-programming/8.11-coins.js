@@ -1,37 +1,37 @@
 'use strict';
 
-function calculateChange1(cents, coins = [25, 10, 5, 1], index = 0) {
+function makeChange1(cents, coins = [25, 10, 5, 1], index = 0) {
   if (index >= coins.length - 1) return 1;
 
   const coin = coins[index];
   let ways = 0;
 
   for (let i = 0; i * coin <= cents; i++) {
-    const remaining = cents - i * coin;
-    ways += calculateChange1(remaining, coins, index + 1);
+    const remainingCents = cents - i * coin;
+    ways += makeChange1(remainingCents, coins, index + 1);
   }
 
   return ways;
 }
-console.log(calculateChange1(50));
+console.log(makeChange1(50));
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
 // Memoized
-function calculateChange2(cents, coins = [25, 10, 5, 1], index = 0, map = {}) {
-  if (map[cents] && map[cents][index] > 0 ) return map[cents][index];
+function makeChange2(cents, coins = [25, 10, 5, 1], index = 0, map = {}) {
+  const mapKey = `${cents}, ${index}`;
+  if (map[mapKey] > 0) return map[mapKey];
   if (index >= coins.length - 1) return 1;
 
   const coin = coins[index];
   let ways = 0;
 
   for (let i = 0; i * coin <= cents; i++) {
-    const remaining = cents - i * coin;
-    ways += calculateChange2(remaining, coins, index + 1, map);
+    const remainingCents = cents - i * coin;
+    ways += makeChange2(remainingCents, coins, index + 1, map);
   }
 
-  if (!map[cents]) map[cents] = [];
-  map[cents][index] = ways;
+  map[mapKey] = ways;
   return ways;
 }
-console.log(calculateChange2(50));
+console.log(makeChange2(50));
