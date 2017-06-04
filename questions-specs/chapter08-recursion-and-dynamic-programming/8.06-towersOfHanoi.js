@@ -25,10 +25,10 @@ console.log(towersOfHanoi(5));
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
-function printTowersOfHanoi(numRings, startStack = "start", endStack = "last") {
+function printTowersOfHanoi(numRings, startStack = 'start', endStack = 'last') {
   if (numRings > 0) {
 
-    const availableSpot = ["start", "middle", "last"]
+    const availableSpot = ['start', 'middle', 'last']
                           .filter(stack => stack !== startStack && stack !== endStack)[0];
 
     // perform towerOfHanoi up to the base case, from the start to an available opening
