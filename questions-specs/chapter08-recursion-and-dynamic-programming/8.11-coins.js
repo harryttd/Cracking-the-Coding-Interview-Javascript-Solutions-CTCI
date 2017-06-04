@@ -35,3 +35,17 @@ function makeChange2(cents, coins = [25, 10, 5, 1], index = 0, map = {}) {
   return ways;
 }
 console.log(makeChange2(50));
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+// O(2ˆn) TIME
+function makeChange3(cents, coins = [25, 10, 5, 1], index = 0) {
+  if (cents < 0) return 0;
+  if (cents === 0) return 1;
+
+  // means index passed last coin and cents > 0 so no solution
+  if (index === coins.length && cents > 0) return 0;
+
+  return makeChange3(cents - coins[index], coins, index) + makeChange3(cents, coins, index + 1);
+}
+console.log(makeChange3(50));
