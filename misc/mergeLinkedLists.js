@@ -35,12 +35,9 @@ function mergeLinkedLists2(head1, head2) {
         head2 = head2.next;
       }
     }
-    else if (head1) {
-      merged.next = head1;
-      break;
-    }
-    else if (head2){
-      merged.next = head2;
+    else {
+      if (head1) merged.next = head1;
+      else if (head2) merged.next = head2;
       break;
     }
 

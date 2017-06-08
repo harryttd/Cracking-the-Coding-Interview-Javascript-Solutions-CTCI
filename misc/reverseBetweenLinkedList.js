@@ -1,19 +1,20 @@
 'use strict';
 
-function reverseBetweenLinkedList(head, m, n) {
-  let newHead = {val: 0, next: null};
+function reverseBetweenLinkedList(head, start, end) {
+  if (start === end) return head;
+
+  const newHead = {val: 0, next: null};
   newHead.next = head;
   let pre = newHead;
 
-  for (let i = 0; i < m - 1; i++) pre = pre.next;
+  for (let i = 0; i < start - 1; i++) pre = pre.next;
 
   let cur = pre.next;
-  for (let i = 0; i < n - m; i++) {
+  for (let i = 0; i < end - start; i++) {
     const move = cur.next;
     cur.next = move.next;
     move.next = pre.next;
     pre.next = move;
-    console.log(cur);
   }
 
   return newHead.next;
