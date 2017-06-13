@@ -13,3 +13,34 @@ function parensCombos(openCount, closeCount = openCount, str = '', result = []) 
 
 console.log(parensCombos(3)); // [ '((()))', '(()())', '(())()', '()(())', '()()()' ]
 console.log(parensCombos(4));
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
+function generateParens(remaining) {
+  const set = new Set();
+
+  if (!remaining) set.add('');
+  else {
+    const prev = generateParens(remaining - 1);
+    for (const str of prev) {
+      for (let i = 0; i < str.length; i++) {
+        if (str[i] === '(') {
+          const newStr = insertInside(str, i);
+          set.add(newStr);
+        }
+      }
+      set.add('()' + str);
+    }
+  }
+
+  return [...set];
+}
+
+function insertInside(str, leftIndex) {
+  const left = str.slice(0, leftIndex + 1);
+  const right = str.slice(leftIndex + 1);
+  return left + '()' + right;
+}
+
+console.log(generateParens(3)); // [ '((()))', '(()())', '(())()', '()(())', '()()()' ]
+console.log(generateParens(4));

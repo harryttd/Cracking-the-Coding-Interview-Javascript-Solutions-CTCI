@@ -50,7 +50,7 @@ function usedInRowOrColumn(grid, row, col, num) {
 function usedInBox(grid, row, col, num) {
   for (let i = 0; i < 3; i++) {
     for (let x = 0; x < 3; x++) {
-      if(grid[i + row][x + col] === num) {
+      if (grid[i + row][x + col] === num) {
         return true;
       }
     }
@@ -58,7 +58,7 @@ function usedInBox(grid, row, col, num) {
   return false;
 }
 
-const grid = [
+const grid1 = [
   [3, 0, 6, 5, 0, 8, 4, 0, 0],
   [5, 2, 0, 0, 0, 0, 0, 0, 0],
   [0, 8, 7, 0, 0, 0, 0, 3, 1],
@@ -69,4 +69,17 @@ const grid = [
   [0, 0, 0, 0, 0, 0, 0, 7, 4],
   [0, 0, 5, 2, 0, 6, 3, 0, 0]
 ];
-console.log(solveSudoku(grid));
+console.log(solveSudoku(grid1));
+
+const grid2 = [
+  [0, 5, 0, 0, 2, 0, 0, 3, 0],
+  [2, 0, 0, 0, 0, 1, 7, 0, 8],
+  [4, 0, 7, 6, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 5, 0, 0, 0],
+  [5, 2, 0, 0, 0, 0, 0, 4, 7],
+  [0, 0, 0, 7, 0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0, 3, 5, 0, 4],
+  [3, 0, 6, 5, 0, 0, 0, 0, 1],
+  [0, 9, 0, 0, 7, 0, 0, 6, 0]
+];
+console.log('\n', solveSudoku(grid2));
