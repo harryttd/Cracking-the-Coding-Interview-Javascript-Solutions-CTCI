@@ -57,3 +57,4 @@ function rainWater2(arr) {
     return acc + Math.min(rightMax[i], leftMax[i]) - level;
   }, 0);
 }
+console.log(rainWater2([0, 0, 4, 0, 0, 6, 0, 0, 3, 0, 5, 0, 1, 0, 0, 0]));

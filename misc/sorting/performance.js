@@ -2,6 +2,7 @@
 
 import { bubbleSort } from './bubbleSort';
 import { mergeSort } from './mergeSort';
+import { countingSort } from './countingSort';
 
 console.log('Sorting Algorithms Performance Test\n');
 
@@ -28,6 +29,10 @@ for (let i = 9; i <= 12; i++) {
   console.time(numItems + ' items - merge');
   mergeSort(mTestArray);
   console.timeEnd(numItems + ' items - merge');
+
+  console.time(numItems + ' items - counting');
+  countingSort(mTestArray);
+  console.timeEnd(numItems + ' items - counting');
 
   console.log('---------------------------');
 }
