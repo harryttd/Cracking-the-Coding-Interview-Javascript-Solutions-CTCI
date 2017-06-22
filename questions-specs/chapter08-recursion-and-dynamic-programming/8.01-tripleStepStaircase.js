@@ -19,11 +19,10 @@ console.log("NOT OPTIMIZED:", tripleStep(10));
 
 // Bottom Up
 function tripleStepBU(steps) {
-  if (steps <= 3) {
+  if (steps <= 2) {
     if (steps < 0) return 0;
     else if (steps === 0) return 1;
-    else if (steps === 1 || steps === 2) return steps;
-    else if (steps === 3) return 4;
+    else return steps;
   }
 
   let a = 1, // One step
