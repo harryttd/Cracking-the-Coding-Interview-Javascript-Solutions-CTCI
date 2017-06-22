@@ -38,14 +38,32 @@ console.log(makeChange2(50));
 
 // |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
 
+function makeChange3(cents, coins = [1, 10, 5, 25]) {
+  const cache = new Array(cents + 1).fill(0);
+  const { length } = coins;
+
+  cache[0] = 1;
+
+  for (let i = 0; i < length; i++) {
+    for (let x = coins[i]; x <= cents; x++) {
+      cache[x] += cache[x - coins[i]];
+    }
+  }
+
+  return cache[cents];
+}
+console.log(makeChange3(500));
+
+// |---~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~---|
+
 // O(2ˆn) TIME
-function makeChange3(cents, coins = [25, 10, 5, 1], index = 0) {
+function makeChange4(cents, coins = [25, 10, 5, 1], index = 0) {
   if (cents < 0) return 0;
   if (cents === 0) return 1;
 
   // means index passed last coin and cents > 0 so no solution
   if (index === coins.length && cents > 0) return 0;
 
-  return makeChange3(cents - coins[index], coins, index) + makeChange3(cents, coins, index + 1);
+  return makeChange4(cents - coins[index], coins, index) + makeChange4(cents, coins, index + 1);
 }
-console.log(makeChange3(50));
+console.log(makeChange4(50));
