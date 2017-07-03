@@ -27,12 +27,9 @@ export function stringCompression1(str) {
 export function stringCompression2(str) {
   if (!str || str.length <= 2) return str;
 
-  const letterGroups = str.match(/(.)\1*/g);
-  let compressedString = '';
+  const compressed = str.match(/(.)\1*/g)
+                    .map(group => group[0] + group.length)
+                    .join``;
 
-  letterGroups.forEach(group => {
-    compressedString += group[0] + group.length;
-  });
-
-  return compressedString.length < str.length ? compressedString : str;
+  return compressed.length < str.length ? compressed : str;
 }
