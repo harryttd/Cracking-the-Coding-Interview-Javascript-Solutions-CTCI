@@ -1,35 +1,23 @@
 'use strict';
 
-// MY FIRST SOLUTION
-function compressString(map) {
-  let str = '';
-  map.forEach((value, letter) => str += letter + value);
-  return str;
-}
-
 export function stringCompression1(str) {
   if (!str || str.length <= 2) return str;
 
   const charMap = new Map();
-  let compressedString = '', previousLetter;
+  let compressedString = '', currentLetter = str[0];
 
   for (const letter of str) {
-    if (letter !== previousLetter) {
-      if (!charMap.has(letter)) {
-        charMap.set(letter, 1);
-      } else {
-        compressedString += compressString(charMap);
-        charMap.clear();
-        charMap.set(letter, 1);
-      }
+    if (letter === currentLetter) {
+      charMap.set(letter, charMap.get(letter) + 1 || 1);
     } else {
-      charMap.set(letter, charMap.get(letter) + 1);
+      compressedString += currentLetter + charMap.get(currentLetter);
+      charMap.clear();
+      currentLetter = letter;
+      charMap.set(letter, 1);
     }
-    previousLetter = letter;
   }
 
-  compressedString += compressString(charMap);
-
+  compressedString += [...charMap][0].join``;
   return compressedString.length < str.length ? compressedString : str;
 }
 
